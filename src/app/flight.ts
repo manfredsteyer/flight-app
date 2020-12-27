@@ -3,4 +3,7 @@ export interface Flight {
     from: string; 
     to: string; 
     date: string; 
+     
+    distance?: number; 
+    calcPrice?(): number; 
 }
