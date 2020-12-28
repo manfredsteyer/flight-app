@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/paper-design": "0.0.20",
     "@angular/animations": "~11.0.5",
     "@angular/common": "~11.0.5",
     "@angular/compiler": "~11.0.5",
