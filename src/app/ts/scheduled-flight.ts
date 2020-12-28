@@ -1,26 +1,26 @@
 // src/app/ts/scheduled-flight.ts
 
-import { Flight } from "../flight";
+import { Flight } from '../flight';
 
 export class ScheduledFlight implements Flight {
 
-    id: number = 0;
-    from: string = '';
-    to: string = '';
-    date: string = '';
+    id = 0;
+    from = '';
+    to = '';
+    date = '';
 
-    distance: number = 0;
+    distance = 0;
 
-    get unixDate() {
+    get unixDate(): number {
         return new Date(this.date).getTime();
     }
 
     set unixDate(time: number) {
-        let date = new Date(time);
+        const date = new Date(time);
         this.date = date.toISOString();
     }
 
-    calcPrice() {
+    calcPrice(): number {
         return this.distance / 3;
     }
 

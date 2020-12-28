@@ -1,15 +1,15 @@
-import { Flight } from "../flight";
+import { Flight } from '../flight';
 
 export class CharterFlight implements Flight {
 
-    id: number = 0;
-    from: string = '';
-    to: string = '';
-    date: string = '';
+    id = 0;
+    from = '';
+    to = '';
+    date = '';
 
-    distance: number = 0;
+    distance = 0;
 
-    calcPrice() {
+    calcPrice(): number {
         return this.distance / 2;
     }
 }

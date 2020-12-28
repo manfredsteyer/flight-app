@@ -9,26 +9,26 @@ export class FlightManager {
         if (!cache) {
             cache = [];
         }
-        this.cache = cache; 
+        this.cache = cache;
     }
 
     search3(from: string, to: string): Flight[] {
         return this.cache.filter(f => {
-            return f.from == from && f.to == to;
+            return f.from === from && f.to === to;
         });
     }
 
     search2(from: string, to: string): Flight[] {
-        let result: Flight[] = this.cache.filter(function (f: Flight) {
-            return f.from == from && f.to == to;
+        const result: Flight[] = this.cache.filter(function (f: Flight) {
+            return f.from === from && f.to === to;
         });
         return result;
     }
 
     search(from: string, to: string): Flight[] {
-        let result = new Array<Flight>();
-        for (let f of this.cache) {
-            if (f.from == from && f.to == to) {
+        const result = new Array<Flight>();
+        for (const f of this.cache) {
+            if (f.from === from && f.to === to) {
                 result.push(f);
             }
         }

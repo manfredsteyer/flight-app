@@ -7,7 +7,7 @@ export class FlightInvoice<T extends Flight> {
     constructor(readonly subject: T, readonly price: number) {
     }
 
-    toString() {
+    toString(): string {
         const id = this.subject.id; // Klappt nun! 
         return `${id}: ${this.price}`;
     }

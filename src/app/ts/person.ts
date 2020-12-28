@@ -1,19 +1,19 @@
 // src/app/ts/person.ts
 
 export class Person {
-    id: number = 0;
-    firstName: string = '';
-    lastName: string = '';
+    id = 0;
+    firstName = '';
+    lastName = '';
 
-    fullName() {
-        return this.firstName + " "  + this.lastName;
+    fullName(): string {
+        return this.firstName + ' '  + this.lastName;
     }
 }
 
-export class Passenger extends Person { 
-    passengerStatus: string = '';
-} 
-     
-export class Pilot extends Person { 
-    licenseNummber: string = ''; 
+export class Passenger extends Person {
+    passengerStatus = '';
+}
+
+export class Pilot extends Person {
+    licenseNummber = '';
 }

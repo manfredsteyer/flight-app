@@ -1,11 +1,11 @@
 // src/app/ts/company-address.ts
 
-import { AbstractAddress } from "./address";
+import { AbstractAddress } from './address';
 
 export class CompanyAddress extends AbstractAddress {
-    companyName: string = '';
+    companyName = '';
 
-    toCSV() {
+    toCSV(): string {
         return `${this.id};${this.companyName};${this.street};${this.zipCode};${this.city}`;
     }
 }

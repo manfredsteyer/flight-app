@@ -1,35 +1,35 @@
 // src/app/ts/demo.ts
 
-import { Flight } from "../flight";
-import { CharterFlight } from "./charter-flight";
-import { CompanyAddress } from "./company-address";
-import { FlightInvoice } from "./flight-invoice";
+import { Flight } from '../flight';
+import { CharterFlight } from './charter-flight';
+import { CompanyAddress } from './company-address';
+import { FlightInvoice } from './flight-invoice';
 
 import { FlightManager } from './flight-manager';
-import { Passenger, Person, Pilot } from "./person";
-import { ScheduledFlight } from "./scheduled-flight";
+import { Passenger, Person, Pilot } from './person';
+import { ScheduledFlight } from './scheduled-flight';
 
 console.debug('Hallo Welt!');
 
-let message: string = 'Hallo Welt!';
+const message = 'Hallo Welt!';
 
-let message3: any = "Hallo Welt!";
+let message3: any = 'Hallo Welt!';
 message3 = 42; // OK
 
 const message5 = 'Hallo';
 const message6 = message5 + ' Welt';
 
-const i2: number = parseInt("42"); // String 42 als Integer 
-const d2: number = parseFloat("0.815"); // String 0.815 als Fließkommazahl
+const i2: number = parseInt('42', 10); // String 42 als Integer
+const d2: number = parseFloat('0.815'); // String 0.815 als Fließkommazahl
 const str: any = 'ein String';
 
 if (isNaN(str)) {
     console.debug('Ein String ist keine Zahl!');
 }
 
-const name1: string = 'Max';
-const name2: string = "Max";
-const name3: string = `
+const name1 = 'Max';
+const name2 = 'Max';
+const name3 = `
 ${name2} Mustermann`;
 
 
@@ -40,9 +40,9 @@ if (!firstName) {
 
 
 const namen: string[] = ['Max', 'Susi'];
-// Gleichbedeutende Alternative: const namen: Array<string> = ['Max', 'Susi']; 
-namen.push('Rainer'); // Hinzufügen 
-namen.push('Anna'); // Hinzufügen 
+// Gleichbedeutende Alternative: const namen: Array<string> = ['Max', 'Susi'];
+namen.push('Rainer'); // Hinzufügen
+namen.push('Anna'); // Hinzufügen
 
 for (const entry of namen) {
     console.debug(entry);
@@ -50,16 +50,16 @@ for (const entry of namen) {
 
 
 
-let f: Function = function () {
+const f: Function = function() {
     console.debug('Hallo Welt!');
-}
+};
 
 f(); // Aufruf von f
 
 type MathFn = (a: number, b: number) => number;
-const func: MathFn = function (a: number, b: number) {
+const func: MathFn = function(a: number, b: number) {
     return a + b;
-}
+};
 console.debug(func(1, 2));
 
 
@@ -69,7 +69,7 @@ const flight: Flight = {
     from: 'Graz',
     to: 'Hamburg',
     date: '2018-12-24T17:00:00.0001:00'
-}
+};
 
 flight.from = 'GRZ';
 flight.to = 'HAM';
@@ -80,7 +80,7 @@ console.debug('flight', f);
 
 
 
-let flights: Array<Flight> = [
+const flights: Array<Flight> = [
     {
         id: 17,
         from: 'Graz',
@@ -107,19 +107,19 @@ let flights: Array<Flight> = [
     }
 ];
 
-let fm = new FlightManager(flights);
-let result1 = fm.search('Graz', 'Hamburg');
+const fm = new FlightManager(flights);
+const result1 = fm.search('Graz', 'Hamburg');
 
-for (let f of result1) {
-    console.debug('flight', f);
+for (const myFlight of result1) {
+    console.debug('flight', myFlight);
 }
 
-function showFlight(f: Flight): void {
+function showFlight(fl: Flight): void {
     console.debug('---- Flight ----');
-    console.debug('id', f.id);
-    console.debug('date', f.from);
-    console.debug('date', f.to);
-    console.debug('date', f.date);
+    console.debug('id', fl.id);
+    console.debug('date', fl.from);
+    console.debug('date', fl.to);
+    console.debug('date', fl.date);
 }
 
 const anotherFlight: Flight = {
@@ -127,7 +127,7 @@ const anotherFlight: Flight = {
     from: 'Graz',
     to: 'Hamburg',
     date: '2018-12-24T17:00:00.0001:00'
-}
+};
 
 showFlight(anotherFlight);
 
@@ -141,8 +141,8 @@ if (oneMoreFlight.calcPrice) {
 }
 
 oneMoreFlight = new CharterFlight();
-// Ersetzen; dieselbe Variable zeigt nun 
-// auf einen CharterFlight 
+// Ersetzen; dieselbe Variable zeigt nun
+// auf einen CharterFlight
 
 oneMoreFlight.distance = 1000;
 
@@ -160,25 +160,25 @@ charterFlight.distance = 1000;
 
 const myFlights: Flight[] = [scheduledFlight, charterFlight];
 
-for (const f of myFlights) {
-    if (f.calcPrice) {
-        console.debug('Preis', f.calcPrice());
+for (const fl of myFlights) {
+    if (fl.calcPrice) {
+        console.debug('Preis', fl.calcPrice());
     }
 }
 
 
 
 const person1: Person = new Passenger();
-person1.firstName = "Max";
-person1.lastName = "Muster";
+person1.firstName = 'Max';
+person1.lastName = 'Muster';
 
 const person2: Person = new Pilot();
-person2.firstName = "Jens";
-person2.lastName = "Wolkenmeyer";
+person2.firstName = 'Jens';
+person2.lastName = 'Wolkenmeyer';
 
-const isPerson = person1 instanceof Person; // true 
-const isPassenger = person1 instanceof Passenger; // true 
-const isPilot = person1 instanceof Pilot; // false 
+const isPerson = person1 instanceof Person; // true
+const isPassenger = person1 instanceof Passenger; // true
+const isPilot = person1 instanceof Pilot; // false
 
 console.debug('isPerson', isPerson);
 console.debug('isPilot', isPilot);
@@ -186,24 +186,24 @@ console.debug('isPassenger', isPassenger);
 
 
 const person1AsPassenger = person1 as Passenger; // Type Assertion
-// let person1AsPassenger = <Pilot>person1; 
-// Alternative Schreibweise 
-let status = person1AsPassenger.passengerStatus;
+// let person1AsPassenger = <Pilot>person1;
+// Alternative Schreibweise
+const status = person1AsPassenger.passengerStatus;
 
 
 
 const a1 = new CompanyAddress(1);
 a1.id = 1;
-a1.city = "Graz";
-a1.street = "Hier";
-a1.zipCode = "8010";
-a1.companyName = "Steh & Schau GmbH";
+a1.city = 'Graz';
+a1.street = 'Hier';
+a1.zipCode = '8010';
+a1.companyName = 'Steh & Schau GmbH';
 
 console.debug('a1 as csv', a1.toCSV());
 console.debug('a1 as full Address', a1.fullAddress());
 
 const nextFlight = new ScheduledFlight();
-nextFlight.date = "2018-12-24";
+nextFlight.date = '2018-12-24';
 console.debug('unix-date', nextFlight.unixDate);
 nextFlight.unixDate = 1000;
 console.debug('unix-date', nextFlight.date);
@@ -220,7 +220,7 @@ console.debug('charterInvoice', charterInvoice.toString());
 
 
 function div(a: number, b: number): number {
-    if (b == 0) {
+    if (b === 0) {
         throw new Error('division by 0 is not allowed');
     }
     return a / b;
