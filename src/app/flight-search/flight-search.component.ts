@@ -16,13 +16,16 @@ export class FlightSearchComponent implements OnInit {
   flights: Array<Flight> = [];
   selectedFlight: Flight | null = null;
 
+  basket: any = {
+    3: true,
+    5: true
+  };
+
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
-
-    this.createDemoFlight();
-
+    // this.createDemoFlight();
   }
 
   createDemoFlight(): void {

@@ -17,17 +17,12 @@
     </button>
 </div>
 
-<table class="table table-striped">
-
-    <tr *ngFor="let flight of flights" [ngClass]="{ 'active': flight === selectedFlight }">
-        <td>{{flight.id}}</td>
-        <td>{{flight.from}}</td>
-        <td>{{flight.to}}</td>
-        <td>{{flight.date | date:'dd.MM.yyyy HH:mm'}}</td>
-        <td><a (click)="select(flight)">Select</a></td>
-    </tr>
-
-</table>
+<div class="row">
+    <div *ngFor="let f of flights" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+        <flight-card [item]="f" [selected]="basket[f.id]">
+        </flight-card>
+    </div>
+</div>
 
 <b>Warenkorb</b>
 <pre>{{ selectedFlight | json }}</pre>
