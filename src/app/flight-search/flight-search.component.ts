@@ -18,8 +18,7 @@ export class FlightSearchComponent implements OnInit {
 
   date: string = new Date().toISOString();
 
-
-  basket: any = {
+  basket: { [key: number]: boolean } = {
     3: true,
     5: true
   };
