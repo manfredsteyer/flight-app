@@ -6,11 +6,13 @@ import { Observable } from 'rxjs';
 import { Flight } from './flight';
 import { createFlightService } from './flight-service.factory';
 
-@Injectable({
+@Injectable(
+  // {
   // providedIn: 'root',
   // useFactory: createFlightService,
   // deps: [HttpClient]
-})
+  //}
+)
 export abstract class FlightService {
   abstract find(from: string, to: string): Observable<Flight[]>;
 }
