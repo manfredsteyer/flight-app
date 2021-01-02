@@ -13,6 +13,7 @@ import { DateComponent } from './date/date.component';
 import { FlightService } from './flight.service';
 import { flightServiceObject } from './flight-service-object';
 import { createFlightService } from './flight-service.factory';
+import { DummyFlightService } from './dummy-flight.service';
 
 @NgModule({
    imports: [
@@ -30,9 +31,12 @@ import { createFlightService } from './flight-service.factory';
    ],
    providers: [
       {
+         provide: DummyFlightService,
+         useValue: flightServiceObject
+      },
+      {
          provide: FlightService,
-         useFactory: createFlightService,
-         deps: [HttpClient]
+         useExisting: DummyFlightService
       }
    ],
    bootstrap: [
