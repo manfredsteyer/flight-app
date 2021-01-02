@@ -1,16 +1,19 @@
 // src/app/flight.service.ts
 
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DefaultFlightService } from './default-flight.service';
 import { Flight } from './flight';
-import { flightServiceObject } from './flight-service-object';
+import { createFlightService } from './flight-service.factory';
 
 
-@Injectable({
-  providedIn: 'root',
-  useValue: flightServiceObject
-})
+@Injectable(
+//   {
+//   providedIn: 'root',
+//   useFactory: createFlightService,
+//   deps: [HttpClient]
+// }
+)
 export abstract class FlightService {
   abstract find(from: string, to: string): Observable<Flight[]>;
 }
