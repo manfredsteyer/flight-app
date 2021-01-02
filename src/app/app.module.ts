@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { DateComponent } from './date/date.component';
 import { FlightService } from './flight.service';
-import { DefaultFlightService } from './default-flight.service';
+import { flightServiceObject } from './flight-service-object';
 
 @NgModule({
    imports: [
@@ -30,7 +30,7 @@ import { DefaultFlightService } from './default-flight.service';
    providers: [
       {
          provide: FlightService,
-         useClass: DefaultFlightService
+         useValue: flightServiceObject
       }
    ],
    bootstrap: [
