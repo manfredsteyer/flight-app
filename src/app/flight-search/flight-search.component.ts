@@ -8,7 +8,13 @@ import { FlightService } from '../flight.service';
 @Component({
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
-  styleUrls: ['./flight-search.component.scss']
+  styleUrls: ['./flight-search.component.scss'],
+  providers: [
+    {
+      provide: FlightService,
+      useClass: DummyFlightService
+    }
+  ]
 })
 export class FlightSearchComponent implements OnInit {
 
