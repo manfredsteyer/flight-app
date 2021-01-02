@@ -1,6 +1,7 @@
 // src/app/flight-search/flight-search.component.ts
 
 import { Component, OnInit } from '@angular/core';
+import { DummyFlightService } from '../dummy-flight.service';
 import { Flight } from '../flight';
 import { FlightService } from '../flight.service';
 
@@ -22,6 +23,9 @@ export class FlightSearchComponent implements OnInit {
   };
 
   constructor(private flightService: FlightService) {
+    if (flightService instanceof DummyFlightService) {
+      console.debug('Eigentlich bin ich ein DummyFlightService');
+    }
   }
 
   ngOnInit(): void {

@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { DateComponent } from './date/date.component';
+import { FlightService } from './flight.service';
+import { DefaultFlightService } from './default-flight.service';
 
 @NgModule({
    imports: [
@@ -25,7 +27,12 @@ import { DateComponent } from './date/date.component';
       FlightCardComponent,
       DateComponent
    ],
-   providers: [],
+   providers: [
+      {
+         provide: FlightService,
+         useClass: DefaultFlightService
+      }
+   ],
    bootstrap: [
       AppComponent
    ]
