@@ -1,8 +1,8 @@
 // src/app/flight-search/flight-search.component.ts
 
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Flight } from '../flight';
+import { FlightService } from '../flight.service';
 
 @Component({
   selector: 'app-flight-search',
@@ -16,55 +16,20 @@ export class FlightSearchComponent implements OnInit {
   flights: Array<Flight> = [];
   selectedFlight: Flight | null = null;
 
-  date: string = new Date().toISOString();
-
   basket: { [key: number]: boolean } = {
     3: true,
     5: true
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private flightService: FlightService) {
   }
 
   ngOnInit(): void {
-    // this.createDemoFlight();
-  }
-
-  createDemoFlight(): void {
-    const url = 'http://www.angular.at/api/flight';
-
-    const headers = new HttpHeaders()
-      .set('Accept', 'application/json');
-
-    const newFlight: Flight = {
-      id: 0,
-      from: 'Gleisdorf',
-      to: 'Graz',
-      date: new Date().toISOString()
-    };
-
-    this.http.post<Flight>(url, newFlight, { headers }).subscribe({
-      next: (flight) => {
-        console.debug('Neue Id: ', flight.id);
-      },
-      error: (err) => {
-        console.debug('Error', err);
-      }
-    });
   }
 
   search(): void {
 
-    const url = 'http://www.angular.at/api/flight';
-
-    const headers = new HttpHeaders()
-      .set('Accept', 'application/json');
-
-    const params = new HttpParams()
-      .set('from', this.from)
-      .set('to', this.to);
-
-    this.http.get<Flight[]>(url, {headers, params}).subscribe({
+    this.flightService.find(this.from, this.to).subscribe({
       next: (flights) => {
         this.flights = flights;
       },
@@ -72,6 +37,7 @@ export class FlightSearchComponent implements OnInit {
         console.debug('Error', err);
       }
     });
+
   }
 
   select(f: Flight): void {
