@@ -12,6 +12,7 @@ import { FlightCardComponent } from './flight-card/flight-card.component';
 import { DateComponent } from './date/date.component';
 import { FlightService } from './flight.service';
 import { DefaultFlightService } from './default-flight.service';
+import { DummyFlightService } from './dummy-flight.service';
 
 @NgModule({
    imports: [
@@ -30,7 +31,13 @@ import { DefaultFlightService } from './default-flight.service';
    providers: [
       {
          provide: FlightService,
-         useClass: DefaultFlightService
+         useClass: DefaultFlightService,
+         multi: true
+      },
+      {
+         provide: FlightService,
+         useClass: DummyFlightService,
+         multi: true
       }
    ],
    bootstrap: [

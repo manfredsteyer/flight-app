@@ -2,7 +2,6 @@
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DefaultFlightService } from './default-flight.service';
 import { Flight } from './flight';
 
 
