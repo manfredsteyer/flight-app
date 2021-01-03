@@ -11,6 +11,16 @@
     <input [(ngModel)]="to" class="form-control">
 </div>
 
+<div class="form-group">
+    <input [(ngModel)]="delayFilter" type="checkbox" id="delayFilter">
+    &nbsp;
+    <label for="delayFilter">Delayed</label>
+</div>
+
+
+
+
+
 <!-- <div class="form-group">
     <label>Date:</label>
     <app-date [(date)]="date"></app-date> 
@@ -24,7 +34,7 @@
 </div>
 
 <div class="row">
-    <div *ngFor="let f of flights | statusFilter:false" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+    <div *ngFor="let f of flights | statusFilter:delayFilter" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
         <flight-card [item]="f" [(selected)]="basket[f.id]">
         </flight-card>
     </div>

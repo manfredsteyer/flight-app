@@ -15,6 +15,7 @@ export class FlightSearchComponent implements OnInit {
   to = 'Graz';
   flights: Array<Flight> = [];
   selectedFlight: Flight | null = null;
+  delayFilter = false;
 
   basket: { [key: number]: boolean } = {
     3: true,
