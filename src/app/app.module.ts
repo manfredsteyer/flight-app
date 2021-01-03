@@ -10,6 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { DateComponent } from './date/date.component';
+import { BASE_URL, FLIGHT_SERVICES } from './tokens';
+import { FlightService } from './flight.service';
+import { DefaultFlightService } from './default-flight.service';
+import { DummyFlightService } from './dummy-flight.service';
 
 @NgModule({
    imports: [
@@ -25,7 +29,25 @@ import { DateComponent } from './date/date.component';
       FlightCardComponent,
       DateComponent
    ],
-   providers: [],
+   providers: [
+      {
+         provide: BASE_URL,
+         useValue: 'http://www.angular.at/api/'
+      },
+      {
+         provide: FLIGHT_SERVICES,
+         useClass: DefaultFlightService,
+         multi: true
+      },
+      {
+         provide: FLIGHT_SERVICES,
+         useClass: DummyFlightService,
+         multi: true
+      },
+
+
+
+   ],
    bootstrap: [
       AppComponent
    ]
