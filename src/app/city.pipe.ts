@@ -1,36 +1,22 @@
 // src/app/city.pipe.ts
 
 import { Pipe, PipeTransform } from '@angular/core';
+import { CityService } from './city.service';
 
 @Pipe({
   name: 'city',
   pure: true
 })
 export class CityPipe implements PipeTransform {
-  transform(value: string | undefined, fmt: 'long' | 'short'): string | undefined {
 
-    let short;
-    let long;
+  constructor(private cityService: CityService) {
+  }
 
-    switch (value) {
-      case 'Graz':
-        short = 'GRZ';
-        long = 'Flughafen Graz Thalerhof';
-        break;
-      case 'Hamburg':
-        short = 'HAM';
-        long = 'Airport Hamburg Fulsbüttel Helmut Schmidt';
-        break;
-      default:
-        short = long = value;
-          // Formatierung nicht möglich ...
+  transform(value: string | undefined, format: 'long' | 'short'): string | undefined {
+    if (typeof value === 'undefined') {
+      return value;
     }
 
-    if (fmt === 'long') {
-      return long;
-    }
-
-    return short;
-
+    return this.cityService.formatName(value, format);
   }
 }
