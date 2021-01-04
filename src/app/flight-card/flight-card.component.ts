@@ -15,10 +15,12 @@ export class FlightCardComponent implements OnInit, OnChanges {
   @Output() selectedChange = new EventEmitter<boolean>();
 
   constructor() {
-    console.debug('ctor', this.item);
+    console.debug('constructor', this.item);
   }
 
   ngOnInit() {
+    // this.selectedChange.next(true);
+    // setTimeout(() => this.selectedChange.next(true), 0);
     console.debug('ngOnInit', this.item);
   }
 
