@@ -6,10 +6,12 @@ import { DateComponent } from './date/date.component';
 import { CityPipe } from './city.pipe';
 import { StatusColorPipe } from './status-color.pipe';
 import { StatusFilterPipe } from './status-filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
   ],
   declarations: [
     DateComponent,
@@ -21,7 +23,11 @@ import { StatusFilterPipe } from './status-filter.pipe';
     DateComponent,
     CityPipe,
     StatusColorPipe,
-    StatusFilterPipe
+    StatusFilterPipe,
+
+    // Neue Einträge
+    FormsModule,
+    CommonModule
   ]
 })
 export class SharedModule { }
