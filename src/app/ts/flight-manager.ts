@@ -1,5 +1,5 @@
 // src/app/ts/flight-manager.ts
-import { Flight } from '../flight';
+import { Flight } from '../flight-booking/flight';
 
 export class FlightManager {
 

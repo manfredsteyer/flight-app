@@ -1,6 +1,6 @@
 // src/app/ts/demo.ts
 
-import { Flight } from '../flight';
+import { Flight } from '../flight-booking/flight';
 import { CharterFlight } from './charter-flight';
 import { CompanyAddress } from './company-address';
 import { FlightInvoice } from './flight-invoice';

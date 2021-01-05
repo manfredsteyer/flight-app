@@ -1,7 +1,7 @@
 // src/app/status-filter.pipe.ts
 
 import { Pipe, PipeTransform } from '@angular/core';
-import { Flight } from './flight';
+import { Flight } from '../flight-booking/flight';
 
 @Pipe({
   name: 'statusFilter',

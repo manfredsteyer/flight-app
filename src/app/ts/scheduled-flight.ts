@@ -1,6 +1,6 @@
 // src/app/ts/scheduled-flight.ts
 
-import { Flight } from '../flight';
+import { Flight } from '../flight-booking/flight';
 
 export class ScheduledFlight implements Flight {
 
