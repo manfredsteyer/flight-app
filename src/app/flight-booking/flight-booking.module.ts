@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
 import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
+import { BasketComponent } from '../basket/basket.component';
 
 @NgModule({
   imports: [

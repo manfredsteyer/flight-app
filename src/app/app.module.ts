@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
+import { BasketComponent } from './basket/basket.component';
 
 @NgModule({
    imports: [
@@ -26,7 +27,8 @@ import { APP_ROUTES } from './app.routes';
       NavbarComponent,
       HomeComponent,
       AboutComponent,
-      NotFoundComponent
+      NotFoundComponent,
+      BasketComponent
    ],
    providers: [],
    bootstrap: [
