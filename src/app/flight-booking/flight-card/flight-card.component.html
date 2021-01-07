@@ -1,3 +1,5 @@
+<!-- src/app/flight-booking/flight-card/flight-card.component.html -->
+
 <div class="card" [ngClass]="{ 'active-card' : selected }">
 
     <div class="card-header">
@@ -11,6 +13,7 @@
         <p>
             <button class="btn btn-default" *ngIf="!selected" (click)="select()">Select</button>
             <button class="btn btn-default" *ngIf="selected" (click)="deselect()">Remove</button>
+            <a class="btn btn-default" [routerLink]="['../flight-edit', item.id, {showDetails:false}]">Edit</a>
         </p>
     </div>
 
