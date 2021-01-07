@@ -1,3 +1,5 @@
+<!-- src/app/app.component.html -->
+
 <div class="wrapper">
 
     <div class="sidebar" data-color="white" data-active-color="danger">
@@ -9,11 +11,11 @@
 
         <div class="content">
 
-            <!-- Alt: -->
-            <!-- <h1>{{title}}</h1> -->
+            <!-- Diese Zeile entfernen: -->
+            <!-- <app-flight-search></app-flight-search> -->
 
-            <!-- Diese Zeile einfügen: -->
-            <app-flight-search></app-flight-search>
+            <!-- Diese Ziele hinzufügen: -->
+            <router-outlet></router-outlet>
 
         </div>
     </div>

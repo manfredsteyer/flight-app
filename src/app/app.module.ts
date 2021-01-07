@@ -7,9 +7,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FlightBookingModule } from './flight-booking/flight-booking.module';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
+import { APP_ROUTES } from './app.routes';
 
 @NgModule({
    imports: [
+      RouterModule.forRoot(APP_ROUTES),
       HttpClientModule,
       BrowserModule,
       FlightBookingModule
@@ -17,7 +23,10 @@ import { FlightBookingModule } from './flight-booking/flight-booking.module';
    declarations: [
       AppComponent,
       SidebarComponent,
-      NavbarComponent
+      NavbarComponent,
+      HomeComponent,
+      AboutComponent,
+      NotFoundComponent
    ],
    providers: [],
    bootstrap: [

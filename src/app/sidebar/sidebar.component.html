@@ -1,3 +1,5 @@
+<!-- src/app/sidebar/sidebar.component.html -->
+
 <div class="sidebar-wrapper">
     <div class="logo">
       <a href="http://angulararchitects.io" class="simple-text logo-mini">
@@ -10,23 +12,32 @@
       </a>
     </div>
       <ul class="nav">
-        <li class="active">
+
+        <!-- Diese Einträge um routerLink und routerLinkActive erweitern: -->
+        <li routerLink="home" routerLinkActive="active">
             <a href="#" >
                 <p>Home</p>
             </a>
         </li>
 
         <li>
-            <a>
+            <a routerLink="flight-search" routerLinkActive="active">
                 <p>Flights</p>
             </a>
         </li>
 
         <li>
-            <a>
+            <a routerLink="passenger-search" routerLinkActive="active">
                 <p>Passengers</p>
             </a>
         </li>
+
+        <!-- Diesen Eintrag ergänzen: -->
+        <li>
+          <a routerLink="about" routerLinkActive="active">
+              <p>About</p>
+          </a>
+        </li>       
 
         <li routerLinkActive="active">
             <a>
