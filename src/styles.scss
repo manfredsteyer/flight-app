@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+.nav-secondary li a {
+    color: black;
+}
+
+.nav-secondary li.active a {
+    color: #ef8157;
+}

@@ -13,28 +13,35 @@
     </div>
       <ul class="nav">
 
-        <!-- Diese Einträge um routerLink und routerLinkActive erweitern: -->
-        <li routerLink="home" routerLinkActive="active">
-            <a href="#" >
+        <li routerLinkActive="active">
+            <a routerLink="home">
                 <p>Home</p>
             </a>
         </li>
 
-        <li>
-            <a routerLink="flight-search" routerLinkActive="active">
+        <!-- Diesen Eintrag hinzufügen: -->
+        <li routerLinkActive="active"> 
+          <a routerLink="flight-booking">
+              <p>Flight Booking</p>
+          </a>
+        </li>       
+
+
+        <!-- Diese beiden Einträge entfernen: -->
+        <!-- <li routerLinkActive="active">
+            <a routerLink="flight-search">
                 <p>Flights</p>
             </a>
         </li>
 
-        <li>
-            <a routerLink="passenger-search" routerLinkActive="active">
+        <li routerLinkActive="active">
+            <a routerLink="passenger-search">
                 <p>Passengers</p>
             </a>
-        </li>
+        </li> -->
 
-        <!-- Diesen Eintrag ergänzen: -->
-        <li>
-          <a routerLink="about" routerLinkActive="active">
+        <li routerLinkActive="active"> 
+          <a routerLink="about">
               <p>About</p>
           </a>
         </li>       
