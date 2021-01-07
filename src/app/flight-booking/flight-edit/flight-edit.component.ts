@@ -20,6 +20,15 @@ export class FlightEditComponent implements OnInit {
       this.id = p.id;
       this.showDetails = p.showDetails;
     });
+
+    this.route.queryParams.subscribe(p => {
+      console.debug('queryParams', p);
+    });
+
+    this.route.fragment.subscribe(p => {
+      console.debug('fragment', p);
+    });
+
   }
 
 }

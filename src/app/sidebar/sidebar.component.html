@@ -15,26 +15,26 @@
 
         <!-- Diese Einträge um routerLink und routerLinkActive erweitern: -->
         <li routerLinkActive="active">
-            <a href="#" routerLink="home">
+            <a href="#" routerLink="home" [queryParams]="{more: 42}" queryParamsHandling="merge" [preserveFragment]="true">
                 <p>Home</p>
             </a>
         </li>
 
         <li routerLinkActive="active">
-            <a routerLink="flight-search">
+            <a routerLink="flight-search" [queryParams]="{more: 43}" queryParamsHandling="merge" [preserveFragment]="true">
                 <p>Flights</p>
             </a>
         </li>
 
         <li routerLinkActive="active">
-            <a routerLink="passenger-search">
+            <a routerLink="passenger-search" [queryParams]="{more: 44}" queryParamsHandling="merge" fragment="light-mode">
                 <p>Passengers</p>
             </a>
         </li>
 
         <!-- Diesen Eintrag ergänzen: -->
         <li routerLinkActive="active">
-          <a routerLink="about">
+          <a routerLink="about" [queryParams]="{more: 45}" queryParamsHandling="merge" [preserveFragment]="true">
               <p>About</p>
           </a>
         </li>       
