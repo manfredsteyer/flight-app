@@ -1,0 +1,11 @@
+<!-- src/app/shared/validation/validation-errors/validation-errors.component.html -->
+
+<div *ngIf="errors?.required">
+    This field is required
+</div>
+<div *ngIf="errors?.minlength">
+    Please enter at least {{ errors?.minlength?.requiredLength }} characters
+</div>
+<div *ngIf="errors?.appCity">
+    This city is now allowed
+</div>

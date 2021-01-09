@@ -11,6 +11,8 @@ import { CityValidationDirective } from './validation/city-validation.directive'
 
 // Von der CLI eingefügt
 import { RoundTripValidationDirective } from './validation/round-trip-validation.directive';
+import { AsyncCityValidationDirective } from './validation/async-city-validation.directive';
+import { ValidationErrorsComponent } from './validation/validation-errors/validation-errors.component';
 
 @NgModule({
   imports: [
@@ -23,9 +25,9 @@ import { RoundTripValidationDirective } from './validation/round-trip-validation
     StatusColorPipe,
     StatusFilterPipe,
     CityValidationDirective,
-
-    // Von der CLI eingefügt
-    RoundTripValidationDirective
+    RoundTripValidationDirective,
+    AsyncCityValidationDirective,
+    ValidationErrorsComponent
   ],
   exports: [
     DateComponent,
@@ -34,10 +36,10 @@ import { RoundTripValidationDirective } from './validation/round-trip-validation
     StatusFilterPipe,
     FormsModule,
     CommonModule,
-
-    // Neue Einträge
     CityValidationDirective,
-    RoundTripValidationDirective
+    RoundTripValidationDirective,
+    AsyncCityValidationDirective,
+    ValidationErrorsComponent
   ]
 })
 export class SharedModule { }

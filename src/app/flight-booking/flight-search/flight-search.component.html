@@ -6,22 +6,34 @@
 <!-- Sie ihm eine Template-Variable zu: -->
 <form #f="ngForm" appRoundTrip>
 
-    <div class="error">
+    <div class="error" *ngIf="f?.errors">
         {{ f?.errors | json }}
     </div>
-    
+
     <div class="error" *ngIf="f?.hasError('appRoundTrip')">
         Round-Trips sind leider nicht möglich!
     </div>
 
     <div class="form-group">
         <label>From:</label>
-        <input [(ngModel)]="from" [ngModelOptions]="{ updateOn: 'change'}" name="from" required minlength="3" appCity="Graz,München,Hamburg,Frankfurt,Zürich,Wien" class="form-control">
+        <input [(ngModel)]="from" name="from" required minlength="3" appAsyncCity appCity="Tripsdrill,Graz,München,Hamburg,Frankfurt,Zürich,Wien" class="form-control">
+        <app-validation-errors [errors]="f?.controls?.from?.errors"></app-validation-errors>
+    
     </div>
 
-    <div class="error" *ngIf="!f?.controls?.from?.valid">
+    <div class="error" *ngIf="!f?.controls?.from?.valid === false">
         Es liegen Validierungsfehler für diese Eingabe vor.
     </div>
+
+    <div class="error" *ngIf="f?.controls?.from?.hasError('appAsyncCity')">
+        Die Stadt wird nicht angeflogen.
+    </div>
+
+    <div class="error" *ngIf="f?.controls?.from?.pending">
+        Validierung wird ausgeführt!
+    </div>
+
+
     <div class="error" *ngIf="f?.controls?.from?.hasError('required')">
         Dieses Feld ist ein Pflichtfeld.
     </div>
