@@ -7,7 +7,7 @@
 <form #f="ngForm">
     <div class="form-group">
         <label>From:</label>
-        <input [(ngModel)]="from" name="from" required minlength="3" class="form-control">
+        <input [(ngModel)]="from" [ngModelOptions]="{ updateOn: 'change'}" name="from" required minlength="3" appCity class="form-control">
     </div>
 
     <div class="error" *ngIf="!f?.controls?.from?.valid">
@@ -17,7 +17,15 @@
         Dieses Feld ist ein Pflichtfeld.
     </div>
     <div class="error" *ngIf="f?.controls?.from?.hasError('minlength')">
-        Erfassen Sie bitte min. 3 Zeichen.
+        Erfassen Sie bitte min. {{ f?.controls?.from?.errors?.minlength?.requiredLength }} Zeichen.
+    </div>
+
+    <div class="error" *ngIf="f?.controls?.from?.hasError('appCity')">
+        Die Stadt wird nicht angeflogen.
+    </div>
+
+    <div class="error" *ngIf="f?.controls?.from?.errors">
+        Internes Errors-Objekt: {{ f?.controls?.from?.errors | json}}
     </div>
 
     <div class="form-group">
