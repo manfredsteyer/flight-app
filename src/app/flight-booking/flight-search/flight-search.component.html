@@ -4,10 +4,19 @@
 
 <!-- Ergänzen Sie den form-Tag und weisen  -->
 <!-- Sie ihm eine Template-Variable zu: -->
-<form #f="ngForm">
+<form #f="ngForm" appRoundTrip>
+
+    <div class="error">
+        {{ f?.errors | json }}
+    </div>
+    
+    <div class="error" *ngIf="f?.hasError('appRoundTrip')">
+        Round-Trips sind leider nicht möglich!
+    </div>
+
     <div class="form-group">
         <label>From:</label>
-        <input [(ngModel)]="from" [ngModelOptions]="{ updateOn: 'change'}" name="from" required minlength="3" appCity class="form-control">
+        <input [(ngModel)]="from" [ngModelOptions]="{ updateOn: 'change'}" name="from" required minlength="3" appCity="Graz,München,Hamburg,Frankfurt,Zürich,Wien" class="form-control">
     </div>
 
     <div class="error" *ngIf="!f?.controls?.from?.valid">
@@ -19,7 +28,6 @@
     <div class="error" *ngIf="f?.controls?.from?.hasError('minlength')">
         Erfassen Sie bitte min. {{ f?.controls?.from?.errors?.minlength?.requiredLength }} Zeichen.
     </div>
-
     <div class="error" *ngIf="f?.controls?.from?.hasError('appCity')">
         Die Stadt wird nicht angeflogen.
     </div>
@@ -30,7 +38,7 @@
 
     <div class="form-group">
         <label>To:</label>
-        <input [(ngModel)]="to" class="form-control">
+        <input [(ngModel)]="to" name="to" class="form-control">
     </div>
 
     <div class="form-group">

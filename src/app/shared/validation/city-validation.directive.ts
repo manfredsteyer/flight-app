@@ -1,7 +1,7 @@
 // src/app/shared/validation/city-validation.directive.ts
 
 // forwardRef importieren:
-import { Directive, forwardRef } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 // Diesen Import ergänzen:
 import { Validator, AbstractControl, NG_VALIDATORS, ValidationErrors } from '@angular/forms';
@@ -21,16 +21,15 @@ import { Validator, AbstractControl, NG_VALIDATORS, ValidationErrors } from '@an
 })
 export class CityValidationDirective implements Validator {
 
+  @Input() appCity = '';
+
   // Das Interface Validator und somit
   // dessen Methode validate implementieren
   public validate(c: AbstractControl): ValidationErrors {
 
-    if (c.value === 'Graz'
-      || c.value === 'Hamburg'
-      || c.value === 'Frankfurt'
-      || c.value === 'Wien'
-      || c.value === 'Mallorca') {
+    const allowedCities = this.appCity.split(',');
 
+    if (allowedCities.includes(c.value)) {
       return {};
     }
 
