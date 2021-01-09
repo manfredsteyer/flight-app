@@ -7,7 +7,6 @@ import { PassengerSearchComponent } from './passenger-search/passenger-search.co
 
 // Diesen Import hinzufügen
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
-import { BasketComponent } from '../basket/basket.component';
 
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
