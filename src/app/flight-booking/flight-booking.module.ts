@@ -9,11 +9,12 @@ import { RouterModule } from '@angular/router';
 import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
 import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
-import { BasketComponent } from '../basket/basket.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     RouterModule.forChild(FLIGHT_BOOKING_ROUTES),
+    FormsModule,
     SharedModule
   ],
   declarations: [

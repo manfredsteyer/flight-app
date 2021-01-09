@@ -2,36 +2,42 @@
 
 <h1>Flight Search</h1>
 
-<div class="form-group">
-    <label>From:</label>
-    <input [(ngModel)]="from" class="form-control">
-</div>
-<div class="form-group">
-    <label>To:</label>
-    <input [(ngModel)]="to" class="form-control">
-</div>
+<!-- Ergänzen Sie den form-Tag und weisen  -->
+<!-- Sie ihm eine Template-Variable zu: -->
+<form #f="ngForm">
+    <div class="form-group">
+        <label>From:</label>
+        <input [(ngModel)]="from" name="from" required minlength="3" class="form-control">
+    </div>
 
-<div class="form-group">
-    <input [(ngModel)]="delayFilter" type="checkbox" id="delayFilter">
-    &nbsp;
-    <label for="delayFilter">Delayed</label>
-</div>
+    <div class="error" *ngIf="!f?.controls?.from?.valid">
+        Es liegen Validierungsfehler für diese Eingabe vor.
+    </div>
+    <div class="error" *ngIf="f?.controls?.from?.hasError('required')">
+        Dieses Feld ist ein Pflichtfeld.
+    </div>
+    <div class="error" *ngIf="f?.controls?.from?.hasError('minlength')">
+        Erfassen Sie bitte min. 3 Zeichen.
+    </div>
 
+    <div class="form-group">
+        <label>To:</label>
+        <input [(ngModel)]="to" class="form-control">
+    </div>
 
+    <div class="form-group">
+        <input [(ngModel)]="delayFilter" type="checkbox" id="delayFilter">
+        &nbsp;
+        <label for="delayFilter">Delayed</label>
+    </div>
 
+    <div class="form-group">
+        <button class="btn btn-default" (click)="search()" [disabled]="f?.valid">
+            Search
+        </button>
+    </div>
+</form>
 
-
-<!-- <div class="form-group">
-    <label>Date:</label>
-    <app-date [(date)]="date"></app-date> 
-    {{date}}
-</div> -->
-
-<div class="form-group">
-    <button class="btn btn-default" (click)="search()" [disabled]="!from || !to">
-        Search
-    </button>
-</div>
 
 <div class="row">
     <div *ngFor="let f of flights | statusFilter:delayFilter" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">

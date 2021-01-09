@@ -1,9 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* src/styles.scss */
+
 .nav-secondary li a {
     color: black;
 }
 
 .nav-secondary li.active a {
     color: #ef8157;
+}
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+input.ng-invalid {
+    border-left-color: red;
+    border-left-style: solid;
+    border-left-width: 5px;
+}
+    
+input.ng-valid {
+    border-left-color: green;
+    border-left-style: solid;
+    border-left-width: 5px;
 }
