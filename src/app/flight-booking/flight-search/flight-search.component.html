@@ -16,12 +16,13 @@
 
     <div class="form-group">
         <label>From:</label>
-        <input [(ngModel)]="from" name="from" required minlength="3" appAsyncCity appCity="Tripsdrill,Graz,München,Hamburg,Frankfurt,Zürich,Wien" class="form-control">
+        <input [(ngModel)]="from" name="from" required minlength="3" appAsyncCity
+            appCity="Tripsdrill,Graz,München,Hamburg,Frankfurt,Zürich,Wien" class="form-control">
         <app-validation-errors [errors]="f?.controls?.from?.errors"></app-validation-errors>
-    
+
     </div>
 
-    <div class="error" *ngIf="!f?.controls?.from?.valid === false">
+    <div class="error" *ngIf="f?.controls?.from?.valid === false">
         Es liegen Validierungsfehler für diese Eingabe vor.
     </div>
 
@@ -54,13 +55,39 @@
     </div>
 
     <div class="form-group">
-        <input [(ngModel)]="delayFilter" type="checkbox" id="delayFilter">
+        <input [(ngModel)]="delayFilter" type="checkbox" name="delayFilter" id="delayFilter">
         &nbsp;
         <label for="delayFilter">Delayed</label>
     </div>
 
     <div class="form-group">
-        <button class="btn btn-default" (click)="search()" [disabled]="f?.valid">
+        <label>
+            <input [(ngModel)]="nonstop" type="checkbox" name="nonstop">
+            &nbsp;
+            Nonstop
+        </label>
+    </div>
+
+
+    <div class="form-group">
+        <label>Flight Class</label>
+        <div *ngFor="let c of flightClasses">
+            <label>
+                <input type="radio" name="flightClass" [(ngModel)]="flightClass" [value]="c">
+                {{c.name}}
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Luggage</label>
+        <select [(ngModel)]="luggage" name="luggage" class="form-control">
+            <option *ngFor="let l of luggageOptions" [ngValue]="l">{{l.name}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-default" (click)="search()" [disabled]="!f?.valid">
             Search
         </button>
     </div>

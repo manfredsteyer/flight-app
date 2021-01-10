@@ -29,7 +29,7 @@ export class AsyncCityValidationDirective implements AsyncValidator {
 
     return this.flightService.find(control.value, '').pipe(
       map(flights => flights.length === 0 ? error : null),
-      delay(2000)
+      // delay(2000)
     );
   }
 
