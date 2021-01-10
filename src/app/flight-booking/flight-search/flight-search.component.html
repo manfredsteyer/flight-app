@@ -6,7 +6,7 @@
 <!-- Sie ihm eine Template-Variable zu: -->
 <form #f="ngForm" appRoundTrip>
 
-    <div class="error">
+    <div class="error" *ngIf="f?.errors">
         {{ f?.errors | json }}
     </div>
     
