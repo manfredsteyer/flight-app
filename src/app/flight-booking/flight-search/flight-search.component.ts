@@ -50,6 +50,7 @@ export class FlightSearchComponent implements OnInit {
 
   search(): void {
 
+
     console.debug('search', this);
 
     this.flightService.find(this.from, this.to).subscribe({

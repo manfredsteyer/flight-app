@@ -14,45 +14,46 @@
         Round-Trips sind leider nicht möglich!
     </div>
 
-    <div class="form-group">
-        <label>From:</label>
-        <input [(ngModel)]="from" name="from" required minlength="3" appAsyncCity
-            appCity="Tripsdrill,Graz,München,Hamburg,Frankfurt,Zürich,Wien" class="form-control">
-        <app-validation-errors [errors]="f?.controls?.from?.errors"></app-validation-errors>
+    
 
-    </div>
+        <div class="form-group">
+            <label>From:</label>
+            <input [(ngModel)]="from" name="from" required minlength="3" appAsyncCity
+                appCity="Tripsdrill,Graz,München,Hamburg,Frankfurt,Zürich,Wien" class="form-control">
+            <app-validation-errors [errors]="f?.controls?.from?.errors"></app-validation-errors>
 
-    <div class="error" *ngIf="f?.controls?.from?.valid === false">
-        Es liegen Validierungsfehler für diese Eingabe vor.
-    </div>
+        </div>
 
-    <div class="error" *ngIf="f?.controls?.from?.hasError('appAsyncCity')">
-        Die Stadt wird nicht angeflogen.
-    </div>
+        <div class="error" *ngIf="f?.controls?.from?.valid === false">
+            Es liegen Validierungsfehler für diese Eingabe vor.
+        </div>
 
-    <div class="error" *ngIf="f?.controls?.from?.pending">
-        Validierung wird ausgeführt!
-    </div>
+        <div class="error" *ngIf="f?.controls?.from?.hasError('appAsyncCity')">
+            Die Stadt wird nicht angeflogen.
+        </div>
 
+        <div class="error" *ngIf="f?.controls?.from?.pending">
+            Validierung wird ausgeführt!
+        </div>
 
-    <div class="error" *ngIf="f?.controls?.from?.hasError('required')">
-        Dieses Feld ist ein Pflichtfeld.
-    </div>
-    <div class="error" *ngIf="f?.controls?.from?.hasError('minlength')">
-        Erfassen Sie bitte min. {{ f?.controls?.from?.errors?.minlength?.requiredLength }} Zeichen.
-    </div>
-    <div class="error" *ngIf="f?.controls?.from?.hasError('appCity')">
-        Die Stadt wird nicht angeflogen.
-    </div>
+        <div class="error" *ngIf="f?.controls?.from?.hasError('required')">
+            Dieses Feld ist ein Pflichtfeld.
+        </div>
+        <div class="error" *ngIf="f?.controls?.from?.hasError('minlength')">
+            Erfassen Sie bitte min. {{ f?.controls?.from?.errors?.minlength?.requiredLength }} Zeichen.
+        </div>
+        <div class="error" *ngIf="f?.controls?.from?.hasError('appCity')">
+            Die Stadt wird nicht angeflogen.
+        </div>
 
-    <div class="error" *ngIf="f?.controls?.from?.errors">
-        Internes Errors-Objekt: {{ f?.controls?.from?.errors | json}}
-    </div>
+        <div class="error" *ngIf="f?.controls?.from?.errors">
+            Internes Errors-Objekt: {{ f?.controls?.from?.errors | json}}
+        </div>
 
-    <div class="form-group">
-        <label>To:</label>
-        <input [(ngModel)]="to" name="to" class="form-control">
-    </div>
+        <div class="form-group">
+            <label>To:</label>
+            <input [(ngModel)]="to" name="to" class="form-control">
+        </div>
 
     <div class="form-group">
         <input [(ngModel)]="delayFilter" type="checkbox" name="delayFilter" id="delayFilter">
@@ -60,30 +61,40 @@
         <label for="delayFilter">Delayed</label>
     </div>
 
-    <div class="form-group">
-        <label>
-            <input [(ngModel)]="nonstop" type="checkbox" name="nonstop">
-            &nbsp;
-            Nonstop
-        </label>
-    </div>
 
+    <div ngModelGroup="details" #details="ngModelGroup">
 
-    <div class="form-group">
-        <label>Flight Class</label>
-        <div *ngFor="let c of flightClasses">
+        <pre>
+            {{details?.controls?.luggage?.dirty}}
+            {{details?.dirty}}
+
+        </pre>
+
+        <div class="form-group">
             <label>
-                <input type="radio" name="flightClass" [(ngModel)]="flightClass" [value]="c">
-                {{c.name}}
+                <input [(ngModel)]="nonstop" type="checkbox" name="nonstop">
+                &nbsp;
+                Nonstop
             </label>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label>Luggage</label>
-        <select [(ngModel)]="luggage" name="luggage" class="form-control">
-            <option *ngFor="let l of luggageOptions" [ngValue]="l">{{l.name}}</option>
-        </select>
+        <div class="form-group">
+            <label>Flight Class</label>
+            <div *ngFor="let c of flightClasses">
+                <label>
+                    <input type="radio" name="flightClass" [(ngModel)]="flightClass" [value]="c">
+                    {{c.name}}
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Luggage</label>
+            <select [(ngModel)]="luggage" name="luggage" class="form-control">
+                <option *ngFor="let l of luggageOptions" [ngValue]="l">{{l.name}}</option>
+            </select>
+        </div>
+
     </div>
 
     <div class="form-group">
