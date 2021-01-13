@@ -11,55 +11,57 @@
 
 <form [formGroup]="formGroup">
 
-    <div class="error" *ngIf="formGroup.hasError('roundTrip')">
-        Round Trips are not supported!
-    </div>
-
     <div class="form-group">
-        <label>Id:</label> 
+        <label>Id:</label>
         <input formControlName="id" class="form-control">
     </div>
 
+    <fieldset formGroupName="route">
+        <!-- Alternative: [formGroup]="routeFormGroup" -->
+
+        <div class="error" *ngIf="routeFormGroup.hasError('roundTrip')">
+            Round Trips are not supported!
+        </div>
+    
+        <div class="form-group">
+            <label>From:</label>
+            <input formControlName="from" class="form-control">
+            <div class="error" *ngIf="routeFormGroup.controls.from.valid === false">
+                Validation Error!
+            </div>
+            <div class="error" *ngIf="routeFormGroup.controls.from.pending">
+                Validating Form ...
+            </div>
+            <div class="error" *ngIf="routeFormGroup.controls.from.hasError('asyncCity')">
+                There is no flight for this city!
+            </div>
+
+            <div class="error" *ngIf="routeFormGroup.controls.from.hasError('required')">
+                This field is required!
+            </div>
+            <div class="error" *ngIf="routeFormGroup.controls.from.hasError('minlength')">
+                Type in 3 charcters at least
+            </div>
+            <div class="error" *ngIf="routeFormGroup.controls.from.hasError('city')">
+                This city is not supported!
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>To:</label>
+            <input formControlName="to" class="form-control">
+        </div>
+    </fieldset>
+
     <div class="form-group">
-        <label>From:</label> 
-        <input formControlName="from" class="form-control">
-        <div class="error" *ngIf="formGroup.controls.from.valid === false">
-            Validation Error!
-        </div>
-        <div class="error" *ngIf="formGroup.controls.from.pending">
-            Validating Form ...
-        </div>
-        <div class="error" *ngIf="formGroup.controls.from.hasError('asyncCity')">
-            There is no flight for this city!
-        </div>
-
-
-
-        <div class="error" *ngIf="formGroup.controls.from.hasError('required')">
-            This field is required!
-        </div>
-        <div class="error" *ngIf="formGroup.controls.from.hasError('minlength')">
-            Type in 3 charcters at least
-        </div>
-        <div class="error" *ngIf="formGroup.controls.from.hasError('city')">
-            This city is not supported!
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label>To:</label> 
-        <input formControlName="to" class="form-control">
-    </div>
-
-    <div class="form-group">
-        <label>Date:</label> 
+        <label>Date:</label>
         <input formControlName="date" class="form-control">
     </div>
 
     <div class="form-group">
         <input formControlName="delayed" type="checkbox">
         &nbsp;
-        <label>Delayed:</label> 
+        <label>Delayed:</label>
     </div>
 
     <button class="btn btn-default" (click)="save()">Save</button>

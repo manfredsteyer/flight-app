@@ -23,12 +23,13 @@ export class FlightEditComponent implements OnInit {
   showDetails = false;
 
   formGroup: FormGroup;
+  routeFormGroup: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private flightService: FlightService
-    ) {
+  ) {
 
     // Hinzufügen:
     // this.formGroup = new FormGroup({
@@ -40,8 +41,7 @@ export class FlightEditComponent implements OnInit {
     //   delayed: new FormControl(false)
     // });
 
-    this.formGroup = fb.group({
-      id: [],
+    this.routeFormGroup = fb.group({
       from: [
         'Graz',
         [
@@ -54,11 +54,16 @@ export class FlightEditComponent implements OnInit {
         ]
       ],
       to: ['Hamburg'],
+    },
+    {
+      validators: [roundTripValidator()]
+    });
+
+    this.formGroup = fb.group({
+      id: [],
+      route: this.routeFormGroup,
       date: [],
       delayed: []
-    }, {
-      updateOn: 'blur',
-      validators : [roundTripValidator()]
     });
 
     this.formGroup.controls.delayed.statusChanges.subscribe(
