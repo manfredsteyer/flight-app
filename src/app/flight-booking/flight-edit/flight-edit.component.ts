@@ -61,6 +61,14 @@ export class FlightEditComponent implements OnInit {
       validators : [roundTripValidator()]
     });
 
+    // this.formGroup.patchValue({
+    //   id: 17,
+    //   from: 'Hier',
+    //   to: 'Da',
+    //   date: new Date().toISOString(),
+    //   delayed: false
+    // });
+
     this.formGroup.controls.delayed.statusChanges.subscribe(
       value => console.debug('delayed changed', value)
     );
