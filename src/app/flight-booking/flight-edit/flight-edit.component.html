@@ -67,7 +67,7 @@
 
     <fieldset formArrayName="categories">
 
-        <div *ngFor="let group of categoriesFormArray.controls" [formGroup]="group" class="form-group">
+        <div *ngFor="let group of categoriesFormArray.controls; let i = index" [formGroupName]="i" class="form-group">
             <label>Category Name:</label>
             <input formControlName="categoryName" class="form-control">
             <label>Base Price:</label>
