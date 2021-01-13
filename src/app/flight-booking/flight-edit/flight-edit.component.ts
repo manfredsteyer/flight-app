@@ -26,6 +26,13 @@ export class FlightEditComponent implements OnInit {
   routeFormGroup: FormGroup;
   categoriesFormArray: FormArray;
 
+  metaData = [
+    { label: 'FlugNummer', name: 'id', type: 'text' },
+    { label: 'Route', name: 'route', type: 'readonly'},
+    { label: 'Date', name: 'date', type: 'text' },
+    { label: 'Delayed', name: 'delayed', type: 'checkbox' },
+  ];
+
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,

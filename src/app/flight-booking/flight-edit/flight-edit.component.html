@@ -22,7 +22,7 @@
         <div class="error" *ngIf="routeFormGroup.hasError('roundTrip')">
             Round Trips are not supported!
         </div>
-    
+
         <div class="form-group">
             <label>From:</label>
             <input formControlName="from" class="form-control">
@@ -71,7 +71,7 @@
             <label>Category Name:</label>
             <input formControlName="categoryName" class="form-control">
             <label>Base Price:</label>
-            <input formControlName="basePrice" class="form-control">            
+            <input formControlName="basePrice" class="form-control">
         </div>
 
     </fieldset>
@@ -81,4 +81,17 @@
 
     <button class="btn btn-default" (click)="save()">Save</button>
 
+
+
+</form>
+
+<h2>Dynamic Form</h2>
+
+<form [formGroup]="formGroup">
+    <div class="form-group" *ngFor="let item of metaData">
+        <label>{{item.label}}:</label>
+        <input *ngIf="item.type === 'text'" [formControlName]="item.name" class="form-control">
+        <input *ngIf="item.type === 'checkbox'" [formControlName]="item.name" type="checkbox">
+        <div *ngIf="item.type === 'readonly'">{{ formGroup.controls[item.name].value | json }}</div>
+    </div>
 </form>
