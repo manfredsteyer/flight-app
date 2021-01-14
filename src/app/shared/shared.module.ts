@@ -16,6 +16,7 @@ import { ValidationErrorsComponent } from './validation/validation-errors/valida
 import { TabComponent } from './controls/tab/tab.component';
 import { TabbedPaneComponent } from './controls/tabbed-pane/tabbed-pane.component';
 import { TabNavigatorComponent } from './controls/tab-navigator/tab-navigator.component';
+import { SplitTabComponent } from './controls/split-tab/split-tab.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { TabNavigatorComponent } from './controls/tab-navigator/tab-navigator.co
     ValidationErrorsComponent,
     TabComponent,
     TabbedPaneComponent,
-    TabNavigatorComponent
+    TabNavigatorComponent,
+    SplitTabComponent
   ],
   exports: [
     DateComponent,
@@ -49,6 +51,7 @@ import { TabNavigatorComponent } from './controls/tab-navigator/tab-navigator.co
     TabComponent,
     TabbedPaneComponent,
     TabNavigatorComponent,
+    SplitTabComponent,
   ]
 })
 export class SharedModule { }
