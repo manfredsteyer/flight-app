@@ -1,7 +1,9 @@
 <div class="tabbed-pane">
-    <span *ngFor="let tab of tabs" class="tab-link">
-        <a (click)="activate(tab)">{{tab.title}}</a>
-    </span>
+    <div class="navigation">
+        <span *ngFor="let tab of tabs" class="tab-link">
+            <a [ngClass]="{active: tab == activeTab}" (click)="activate(tab)">{{tab.title}}</a>
+        </span>
+    </div>
 
     <ng-content></ng-content>
 </div>

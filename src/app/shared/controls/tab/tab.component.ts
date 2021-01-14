@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TabbedPaneComponent } from '../tabbed-pane/tabbed-pane.component';
 
 @Component({
   selector: 'app-tab',
@@ -10,7 +11,9 @@ export class TabComponent implements OnInit {
   @Input() title = '';
   visible = true;
 
-  constructor() { }
+  constructor(pane: TabbedPaneComponent) {
+    pane.register(this);
+  }
 
   ngOnInit(): void {
   }

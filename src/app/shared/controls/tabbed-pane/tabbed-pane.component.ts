@@ -9,6 +9,7 @@ import { TabComponent } from '../tab/tab.component';
 export class TabbedPaneComponent implements OnInit, AfterContentInit {
 
   tabs: Array<TabComponent> = [];
+  activeTab: TabComponent | undefined;
 
   constructor() { }
 
@@ -29,6 +30,7 @@ export class TabbedPaneComponent implements OnInit, AfterContentInit {
     for (const tab of this.tabs) {
       tab.visible = (tab === active);
     }
+    this.activeTab = active;
   }
 
 }
