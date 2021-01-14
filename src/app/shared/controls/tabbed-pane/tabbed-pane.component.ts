@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, OnInit, QueryList } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 
 @Component({
@@ -8,10 +8,19 @@ import { TabComponent } from '../tab/tab.component';
 })
 export class TabbedPaneComponent implements OnInit, AfterContentInit {
 
-  tabs: Array<TabComponent> = [];
+  @ContentChildren(TabComponent)
+  tabQueryList: QueryList<TabComponent> | undefined;
+
+  currentPage = 0;
+
+  get tabs() {
+    return this.tabQueryList?.toArray() ?? [];
+  }
+
   activeTab: TabComponent | undefined;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngAfterContentInit(): void {
     if (this.tabs.length > 0) {
@@ -22,15 +31,12 @@ export class TabbedPaneComponent implements OnInit, AfterContentInit {
   ngOnInit(): void {
   }
 
-  register(tab: TabComponent): void {
-    this.tabs.push(tab);
-  }
-
   activate(active: TabComponent): void {
     for (const tab of this.tabs) {
       tab.visible = (tab === active);
     }
     this.activeTab = active;
+    this.currentPage = this.tabs.indexOf(active) + 1;
   }
 
 }

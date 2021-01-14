@@ -15,6 +15,7 @@ import { AsyncCityValidationDirective } from './validation/async-city-validation
 import { ValidationErrorsComponent } from './validation/validation-errors/validation-errors.component';
 import { TabComponent } from './controls/tab/tab.component';
 import { TabbedPaneComponent } from './controls/tabbed-pane/tabbed-pane.component';
+import { TabNavigatorComponent } from './controls/tab-navigator/tab-navigator.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { TabbedPaneComponent } from './controls/tabbed-pane/tabbed-pane.componen
     AsyncCityValidationDirective,
     ValidationErrorsComponent,
     TabComponent,
-    TabbedPaneComponent
+    TabbedPaneComponent,
+    TabNavigatorComponent
   ],
   exports: [
     DateComponent,
@@ -46,6 +48,7 @@ import { TabbedPaneComponent } from './controls/tabbed-pane/tabbed-pane.componen
     ValidationErrorsComponent,
     TabComponent,
     TabbedPaneComponent,
+    TabNavigatorComponent,
   ]
 })
 export class SharedModule { }
