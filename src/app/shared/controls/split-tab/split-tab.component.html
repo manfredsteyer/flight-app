@@ -1,14 +1,13 @@
 <div *ngIf="visible">
     <h2>{{title}}</h2>
 
-    <div>
-        <a (click)="setMode('both')">Both</a> | 
-        <a (click)="setMode('top')">Top</a> | 
+    <div class="navigation">
+        <a (click)="setMode('both')">Both</a>
+        <a (click)="setMode('top')">Top</a> 
         <a (click)="setMode('bottom')">Bottom</a> 
     </div>
 
     <ng-content *ngIf="mode === 'top' || mode === 'both'" select=".top"></ng-content>
-    <hr *ngIf="mode === 'both'">
     <ng-content *ngIf="mode === 'bottom' || mode === 'both'" select=".bottom"></ng-content>
 
 </div>

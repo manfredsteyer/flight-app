@@ -9,7 +9,7 @@ import { TabComponent } from '../tab/tab.component';
 })
 export class TabbedPaneComponent implements OnInit, AfterContentInit, AfterViewInit {
 
-  @ContentChildren(TabComponent)
+  @ContentChildren('tab')
   tabQueryList: QueryList<TabComponent> | undefined;
 
   @ViewChild('navigator')
