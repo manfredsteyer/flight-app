@@ -9,4 +9,11 @@
 
     <app-tab-navigator [page]="currentPage" #navigator>
     </app-tab-navigator>
+
+    <div>
+        <button (click)="navigator.prev()">Next</button>
+        {{navigator.page}}
+        <button (click)="navigator.next()">Prev</button>
+    </div>
+
 </div>
