@@ -13,6 +13,8 @@ import { CityValidationDirective } from './validation/city-validation.directive'
 import { RoundTripValidationDirective } from './validation/round-trip-validation.directive';
 import { AsyncCityValidationDirective } from './validation/async-city-validation.directive';
 import { ValidationErrorsComponent } from './validation/validation-errors/validation-errors.component';
+import { TabComponent } from './controls/tab/tab.component';
+import { TabbedPaneComponent } from './controls/tabbed-pane/tabbed-pane.component';
 
 @NgModule({
   imports: [
@@ -27,7 +29,9 @@ import { ValidationErrorsComponent } from './validation/validation-errors/valida
     CityValidationDirective,
     RoundTripValidationDirective,
     AsyncCityValidationDirective,
-    ValidationErrorsComponent
+    ValidationErrorsComponent,
+    TabComponent,
+    TabbedPaneComponent
   ],
   exports: [
     DateComponent,
@@ -39,7 +43,9 @@ import { ValidationErrorsComponent } from './validation/validation-errors/valida
     CityValidationDirective,
     RoundTripValidationDirective,
     AsyncCityValidationDirective,
-    ValidationErrorsComponent
+    ValidationErrorsComponent,
+    TabComponent,
+    TabbedPaneComponent,
   ]
 })
 export class SharedModule { }

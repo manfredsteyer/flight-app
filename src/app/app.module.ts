@@ -13,13 +13,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { BasketComponent } from './basket/basket.component';
+import { CustomerModule } from './customer/customer.module';
 
 @NgModule({
    imports: [
       RouterModule.forRoot(APP_ROUTES),
       HttpClientModule,
       BrowserModule,
-      FlightBookingModule
+      FlightBookingModule,
+      CustomerModule
    ],
    declarations: [
       AppComponent,
