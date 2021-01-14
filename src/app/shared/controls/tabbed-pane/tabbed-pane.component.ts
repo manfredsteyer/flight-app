@@ -11,13 +11,12 @@ export class TabbedPaneComponent implements OnInit, AfterContentInit {
   @ContentChildren(TabComponent)
   tabQueryList: QueryList<TabComponent> | undefined;
 
+  activeTab: TabComponent | undefined;
   currentPage = 0;
 
-  get tabs() {
+  get tabs(): TabComponent[] {
     return this.tabQueryList?.toArray() ?? [];
   }
-
-  activeTab: TabComponent | undefined;
 
   constructor() {
   }
@@ -37,6 +36,10 @@ export class TabbedPaneComponent implements OnInit, AfterContentInit {
     }
     this.activeTab = active;
     this.currentPage = this.tabs.indexOf(active) + 1;
+  }
+
+  pageChange(page: number): void {
+    this.activate(this.tabs[page-1]);
   }
 
 }
