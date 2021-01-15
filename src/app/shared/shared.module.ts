@@ -19,6 +19,7 @@ import { TabNavigatorComponent } from './controls/tab-navigator/tab-navigator.co
 import { SplitTabComponent } from './controls/split-tab/split-tab.component';
 import { DataTableComponent } from './controls/data-table/data-table.component';
 import { TableFieldDirective } from './controls/data-table/table-field.directive';
+import { CustomTemplateOutletDirective } from './controls/data-table/custom-template-outlet.directive';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { TableFieldDirective } from './controls/data-table/table-field.directive
     TabNavigatorComponent,
     SplitTabComponent,
     DataTableComponent,
-    TableFieldDirective
+    TableFieldDirective,
+    CustomTemplateOutletDirective
   ],
   exports: [
     DateComponent,
@@ -58,6 +60,7 @@ import { TableFieldDirective } from './controls/data-table/table-field.directive
     SplitTabComponent,
     DataTableComponent,
     TableFieldDirective,
+    CustomTemplateOutletDirective,
   ]
 })
 export class SharedModule { }
