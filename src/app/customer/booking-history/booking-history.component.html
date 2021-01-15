@@ -24,6 +24,17 @@
 </app-tabbed-pane>
 
 
+<input [appInfo]="info">
+<ng-template #info>
+<p>
+    Important information!
+</p>
+<p>
+    Test!
+</p>
+</ng-template>
+
+
 <!--   rnd = Math.random() < 0.5; -->
 <ng-container *ngTemplateOutlet="rnd ? yes : no"></ng-container>
 
