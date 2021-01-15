@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { DialogService, DIALOG_DATA } from '../dialog.service';
+import { DialogService } from '../dialog.service';
+import { DIALOG_DATA } from '../dialog.token';
 
 @Component({
   selector: 'app-demo-dialog',

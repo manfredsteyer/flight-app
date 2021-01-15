@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit, Type } from '@angular/core';
-import { DialogService, DIALOG_DATA } from '../dialog.service';
+import { DialogService } from '../dialog.service';
+import { DIALOG_DATA } from '../dialog.token';
 
 @Component({
   selector: 'app-dialog-outlet',
@@ -17,14 +18,12 @@ export class DialogOutletComponent implements OnInit {
   comp: Type<any> | null = null;
 
   ngOnInit(): void {
-    this.dialogService.componentToShow.subscribe(comp => {
-      this.comp = comp;
-    });
 
-    this.dialogService.data.subscribe(data => {
+    this.dialogService.dialogInfo.subscribe(info => {
+      this.comp = info.component;
       this.injector = Injector.create({
         providers: [
-          { provide: DIALOG_DATA, useValue: data }
+          { provide: DIALOG_DATA, useValue: info.data }
         ],
         parent: this.parentInjector
       });
