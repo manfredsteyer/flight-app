@@ -16,7 +16,8 @@ export class InfoDirective implements OnInit {
     }
     const ref = this.viewContainer.createEmbeddedView(this.template);
     ref.rootNodes.forEach(nativeElement => {
-      console.debug('nativeElement', nativeElement);
+      // console.debug('nativeElement', nativeElement);
+      nativeElement.style.color = 'red';
     });
 
   }
