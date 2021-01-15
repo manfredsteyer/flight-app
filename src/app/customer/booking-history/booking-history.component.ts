@@ -27,4 +27,9 @@ export class BookingHistoryComponent implements OnInit {
   showDialog(): void {
     this.dialogService.show(DemoDialogComponent, 'Hallo Welt!');
   }
+
+  delete(): void {
+    console.debug('delete ...');
+  }
+
 }

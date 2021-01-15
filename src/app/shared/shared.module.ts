@@ -23,6 +23,7 @@ import { CustomTemplateOutletDirective } from './controls/data-table/custom-temp
 import { DialogOutletComponent } from './controls/dialog/dialog-outlet/dialog-outlet.component';
 import { DemoDialogComponent } from './controls/dialog/demo-dialog/demo-dialog.component';
 import { InfoDirective } from './controls/info.directive';
+import { ClickWithWarningDirective } from './controls/click-with-warning.directive';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { InfoDirective } from './controls/info.directive';
     CustomTemplateOutletDirective,
     DialogOutletComponent,
     DemoDialogComponent,
-    InfoDirective
+    InfoDirective,
+    ClickWithWarningDirective
   ],
   exports: [
     DateComponent,
@@ -69,7 +71,8 @@ import { InfoDirective } from './controls/info.directive';
     CustomTemplateOutletDirective,
     DialogOutletComponent,
     DemoDialogComponent,
-    InfoDirective
+    InfoDirective,
+    ClickWithWarningDirective
   ]
 })
 export class SharedModule { }
