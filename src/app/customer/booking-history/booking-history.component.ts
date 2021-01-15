@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Flight } from 'src/app/flight-booking/flight';
+import { DemoDialogComponent } from 'src/app/shared/controls/dialog/demo-dialog/demo-dialog.component';
+import { DialogService } from 'src/app/shared/controls/dialog/dialog.service';
 
 @Component({
   selector: 'app-booking-history',
@@ -14,9 +16,15 @@ export class BookingHistoryComponent implements OnInit {
     { id: 3, from: 'Hamburg', to: 'Mallorca', date: '2025-02-01T17:45+01:00' }
   ];
 
-  constructor() { }
+  rnd = Math.random() < 0.5;
+
+  constructor(private dialogService: DialogService) {
+  }
 
   ngOnInit(): void {
   }
 
+  showDialog(): void {
+    this.dialogService.show(DemoDialogComponent, 'Hallo Welt!');
+  }
 }

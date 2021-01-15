@@ -22,3 +22,15 @@
 
 
 </app-tabbed-pane>
+
+
+<!--   rnd = Math.random() < 0.5; -->
+<ng-container *ngTemplateOutlet="rnd ? yes : no"></ng-container>
+
+<ng-template #yes>Yes</ng-template>
+<ng-template #no>No!</ng-template>
+
+<br><br>
+
+<button class="btn" (click)="showDialog()">Show Dialog</button>
+<app-dialog-outlet></app-dialog-outlet>

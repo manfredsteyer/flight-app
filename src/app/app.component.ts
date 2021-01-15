@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DemoDialogComponent } from './shared/controls/dialog/demo-dialog/demo-dialog.component';
+import { DialogService } from './shared/controls/dialog/dialog.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hello World!';
+
 }

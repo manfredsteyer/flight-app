@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { BasketComponent } from './basket/basket.component';
 import { CustomerModule } from './customer/customer.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
    imports: [

@@ -20,6 +20,8 @@ import { SplitTabComponent } from './controls/split-tab/split-tab.component';
 import { DataTableComponent } from './controls/data-table/data-table.component';
 import { TableFieldDirective } from './controls/data-table/table-field.directive';
 import { CustomTemplateOutletDirective } from './controls/data-table/custom-template-outlet.directive';
+import { DialogOutletComponent } from './controls/dialog/dialog-outlet/dialog-outlet.component';
+import { DemoDialogComponent } from './controls/dialog/demo-dialog/demo-dialog.component';
 
 @NgModule({
   imports: [
@@ -41,7 +43,9 @@ import { CustomTemplateOutletDirective } from './controls/data-table/custom-temp
     SplitTabComponent,
     DataTableComponent,
     TableFieldDirective,
-    CustomTemplateOutletDirective
+    CustomTemplateOutletDirective,
+    DialogOutletComponent,
+    DemoDialogComponent
   ],
   exports: [
     DateComponent,
@@ -61,6 +65,8 @@ import { CustomTemplateOutletDirective } from './controls/data-table/custom-temp
     DataTableComponent,
     TableFieldDirective,
     CustomTemplateOutletDirective,
+    DialogOutletComponent,
+    DemoDialogComponent
   ]
 })
 export class SharedModule { }

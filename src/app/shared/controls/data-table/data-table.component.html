@@ -3,10 +3,10 @@
     <tr *ngFor="let row of data">
 
         <td *ngFor="let f of fieldList">
-            <ng-container *ngTemplateOutlet="f.templateRef; context: { $implicit: row[f.propName] }"></ng-container>
+            <!-- <ng-container *ngTemplateOutlet="f.templateRef; context: { $implicit: row[f.propName] }"></ng-container> -->
 
             <!-- Custom Implementation of ngTemplateOutlet: -->
-            <!-- <ng-container *appCustomTemplateOutlet="f.templateRef; context: { $implicit: row[f.propName] }"></ng-container> -->
+            <ng-container *appCustomTemplateOutlet="f.templateRef; context: { $implicit: row[f.propName] }"></ng-container>
 
         </td>
 

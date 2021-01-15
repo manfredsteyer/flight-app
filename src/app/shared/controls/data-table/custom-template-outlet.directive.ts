@@ -14,7 +14,13 @@ export class CustomTemplateOutletDirective implements OnInit {
     if (!this.template) {
       return;
     }
+    // this.viewContainer.clear();
+
     this.viewContainer.createEmbeddedView(this.template, this.context);
+
+    // const ref = this.viewContainer.createEmbeddedView(this.template, this.context);
+    // const nativeElement = ref.rootNodes.pop();
+    // console.debug(nativeElement);
   }
 
 }
