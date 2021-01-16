@@ -1,3 +1,5 @@
+// src/app/shared/controls/tabbed-pane/tabbed-pane.component.ts
+
 import { AfterContentInit, Component, ContentChildren, OnInit, QueryList } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 

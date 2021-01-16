@@ -1,3 +1,5 @@
+// src/app/shared/controls/tab-navigator/tab-navigator.component.ts
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
