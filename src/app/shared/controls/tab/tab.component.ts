@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Optional } from '@angular/core';
-import { TabbedPaneComponent } from '../tabbed-pane/tabbed-pane.component';
+// src/app/shared/controls/tab/tab.component.ts
+
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab',
