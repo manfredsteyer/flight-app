@@ -1,21 +1,24 @@
-// ViewChild importieren:
+// src/app/shared/controls/tabbed-pane/tabbed-pane.component.ts
+
 import { AfterContentInit, AfterViewInit, Component, ContentChildren, OnInit, QueryList, ViewChild } from '@angular/core';
 import { TabNavigatorComponent } from '../tab-navigator/tab-navigator.component';
 import { TabComponent } from '../tab/tab.component';
 
+// Import hinzufügen
+import { TabbedPaneService } from './tabbed-pane.service';
+
 @Component({
   selector: 'app-tabbed-pane',
   templateUrl: './tabbed-pane.component.html',
-  styleUrls: ['./tabbed-pane.component.scss']
+  styleUrls: ['./tabbed-pane.component.scss'],
+
+  // Provier hinzufügen:
+  viewProviders: [TabbedPaneService]
 })
 export class TabbedPaneComponent implements OnInit, AfterContentInit, AfterViewInit {
 
   @ContentChildren(TabComponent)
   tabQueryList: QueryList<TabComponent> | undefined;
-
-  // Einfügen:
-  @ViewChild(TabNavigatorComponent)
-  navigator: TabNavigatorComponent | undefined;
 
   activeTab: TabComponent | undefined;
   currentPage = 0;
@@ -24,19 +27,18 @@ export class TabbedPaneComponent implements OnInit, AfterContentInit, AfterViewI
     return this.tabQueryList?.toArray() ?? [];
   }
 
-  constructor() {
+  constructor(private service: TabbedPaneService) {
   }
 
-  // Direkt mit Navigator interagieren
+  // Diese Methode aktualisieren
   ngAfterViewInit(): void {
-    if (this.navigator) {
-      this.navigator.pageCount = this.tabs.length;
-      // Diese Anweisung würde einen Zyklus verursachen:
-      // this.navigator.page = 1;
-      this.navigator.pageChange.subscribe((page: number) => {
+      this.service.pageCount.next(this.tabs.length);
+      this.service.currentPage.subscribe((page: number) => {
+        if (page === this.currentPage) {
+          return;
+        }
         this.pageChange(page);
       });
-    }
   }
 
   ngAfterContentInit(): void {
@@ -53,11 +55,13 @@ export class TabbedPaneComponent implements OnInit, AfterContentInit, AfterViewI
       tab.visible = (tab === active);
     }
     this.activeTab = active;
+    // Aktualisieren:
     this.currentPage = this.tabs.indexOf(active) + 1;
+    this.service.currentPage.next(this.currentPage);
   }
 
   pageChange(page: number): void {
-    this.activate(this.tabs[page-1]);
+    this.activate(this.tabs[page - 1]);
   }
 
 }

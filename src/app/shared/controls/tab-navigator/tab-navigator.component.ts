@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+// src/app/shared/controls/tab-navigator/tab-navigator.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { TabbedPaneService } from '../tabbed-pane/tabbed-pane.service';
 
 @Component({
   selector: 'app-tab-navigator',
@@ -7,13 +10,23 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TabNavigatorComponent implements OnInit {
 
-  @Input() page = 0;
-  @Input() pageCount = 0;
-  @Output() pageChange = new EventEmitter<number>();
+  // Keine Inputs mehr
+  page = 0;
+  pageCount = 0;
 
-  constructor() { }
+  // Output wurde entfernt!
+
+  // Hinzufügen: Service injizieren lassen
+  constructor(private service: TabbedPaneService) { }
 
   ngOnInit(): void {
+    // Hinzufügen: Von Service benachrichtigen lassen
+    this.service.pageCount.subscribe(pageCount => {
+      this.pageCount = pageCount;
+    });
+    this.service.currentPage.subscribe(page => {
+      this.page = page;
+    });
   }
 
   prev(): void {
@@ -21,7 +34,9 @@ export class TabNavigatorComponent implements OnInit {
       return;
     }
     this.page--;
-    this.pageChange.emit(this.page);
+
+    // Hinzufügen: Service benachrichtigen
+    this.service.currentPage.next(this.page);
   }
 
   next(): void {
@@ -29,7 +44,9 @@ export class TabNavigatorComponent implements OnInit {
       return;
     }
     this.page++;
-    this.pageChange.emit(this.page);
+
+    // Hinzufügen: Service benachrichtigen
+    this.service.currentPage.next(this.page);
   }
 
 }
