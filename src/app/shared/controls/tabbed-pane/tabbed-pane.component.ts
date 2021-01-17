@@ -1,4 +1,5 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, OnInit, QueryList, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChildren, ElementRef, OnInit, QueryList, ViewChild, ViewContainerRef } from '@angular/core';
+import { BasketComponent } from 'src/app/basket/basket.component';
 import { TabNavigatorComponent } from '../tab-navigator/tab-navigator.component';
 import { TabComponent } from '../tab/tab.component';
 
@@ -18,6 +19,9 @@ export class TabbedPaneComponent implements OnInit, AfterContentInit, AfterViewI
   @ViewChild('navigator', { read: ElementRef, static: true })
   navigatorElementRef: ElementRef | undefined;
 
+  @ViewChild('navigator', { read: ViewContainerRef, static: true })
+  navigatorViewContainerRef: ViewContainerRef | undefined;
+
   activeTab: TabComponent | undefined;
   currentPage = 0;
 
@@ -25,8 +29,9 @@ export class TabbedPaneComponent implements OnInit, AfterContentInit, AfterViewI
     return this.tabQueryList?.toArray() ?? [];
   }
 
-  constructor(private elm: ElementRef) {
-    console.debug('TabbedPaneComponent:ElementRef', elm.nativeElement);
+  constructor(private elm: ElementRef, private container: ViewContainerRef, cfr: ComponentFactoryResolver) {
+      elm.nativeElement.style.color = 'red';
+      // container.createComponent(cfr.resolveComponentFactory(BasketComponent));
   }
 
   ngAfterViewInit(): void {
@@ -39,6 +44,11 @@ export class TabbedPaneComponent implements OnInit, AfterContentInit, AfterViewI
     }
 
     console.debug('navigatorElementRef', this.navigatorElementRef?.nativeElement);
+
+    if (this.navigatorElementRef) {
+      this.navigatorElementRef.nativeElement.style.color = 'red';
+    }
+
   }
 
   ngAfterContentInit(): void {
