@@ -1,4 +1,6 @@
-import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+// src\app\shared\controls\data-table\data-table.component.ts
+
+import { Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { TableFieldDirective } from './table-field.directive';
 
 @Component({
@@ -6,7 +8,7 @@ import { TableFieldDirective } from './table-field.directive';
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent implements OnInit, AfterContentInit {
+export class DataTableComponent implements OnInit {
 
   @ContentChildren(TableFieldDirective)
   fields: QueryList<TableFieldDirective> | undefined;
@@ -23,7 +25,4 @@ export class DataTableComponent implements OnInit, AfterContentInit {
   ngOnInit(): void {
   }
 
-  ngAfterContentInit(): void {
-    console.debug('afterContent', this.fields?.toArray());
-  }
 }
