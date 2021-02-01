@@ -1,3 +1,5 @@
+// src/app/customer/booking-history/booking-history.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { Flight } from 'src/app/flight-booking/flight';
 import { DemoDialogComponent } from 'src/app/shared/controls/dialog/demo-dialog/demo-dialog.component';

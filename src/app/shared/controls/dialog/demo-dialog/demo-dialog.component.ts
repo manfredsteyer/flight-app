@@ -1,3 +1,5 @@
+// src/app/shared/controls/dialog/demo-dialog/demo-dialog.component.ts
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { DialogService } from '../dialog.service';
 import { DIALOG_DATA } from '../dialog.token';

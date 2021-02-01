@@ -1,3 +1,5 @@
+// src/app/shared/controls/dialog/dialog.service.ts
+
 import { Injectable, Type } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DialogInfo } from './dialog-info';

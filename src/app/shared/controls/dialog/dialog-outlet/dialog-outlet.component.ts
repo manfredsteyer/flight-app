@@ -1,3 +1,5 @@
+// src/app/shared/controls/dialog/dialog-outlet/dialog-outlet.component.ts
+
 import { Component, Injector, OnInit, Type } from '@angular/core';
 import { DialogService } from '../dialog.service';
 import { DIALOG_DATA } from '../dialog.token';
@@ -9,13 +11,13 @@ import { DIALOG_DATA } from '../dialog.token';
 })
 export class DialogOutletComponent implements OnInit {
 
+  comp: Type<any> | null = null;
+  injector: Injector | null = null;
+
   constructor(
     private dialogService: DialogService,
     private parentInjector: Injector,
     ) { }
-
-  injector: Injector | null = null;
-  comp: Type<any> | null = null;
 
   ngOnInit(): void {
 

@@ -1,7 +1,7 @@
 // src/app/shared/shared.module.ts
 
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ApplicationRef, ComponentFactoryResolver, Inject, Injector, NgModule } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { DateComponent } from './date/date.component';
 import { CityPipe } from './city.pipe';
 import { StatusColorPipe } from './status-color.pipe';
@@ -69,4 +69,22 @@ import { DemoDialogComponent } from './controls/dialog/demo-dialog/demo-dialog.c
     DemoDialogComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+  constructor(
+    cvr: ComponentFactoryResolver,
+    injector: Injector,
+    appRef: ApplicationRef,
+    @Inject(DOCUMENT) document: Document
+    ) {
+      const factory = cvr.resolveComponentFactory(DialogOutletComponent);
+      const compRef = factory.create(injector);
+
+      // Attach component's view so that Angular does change detection
+      appRef.attachView(compRef.hostView);
+
+      // Add component's DOM node to the view
+      document.body.appendChild(compRef.location.nativeElement);
+  }
+
+}
