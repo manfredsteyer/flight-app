@@ -24,6 +24,9 @@ import { DialogOutletComponent } from './controls/dialog/dialog-outlet/dialog-ou
 import { DemoDialogComponent } from './controls/dialog/demo-dialog/demo-dialog.component';
 import { InfoDirective } from './controls/info.directive';
 import { ClickWithWarningDirective } from './controls/click-with-warning.directive';
+import { UnlessDirective } from './common/unless.directive';
+import { RepeateDirective } from './common/repeat.directive';
+
 
 @NgModule({
   imports: [
@@ -49,7 +52,9 @@ import { ClickWithWarningDirective } from './controls/click-with-warning.directi
     DialogOutletComponent,
     DemoDialogComponent,
     InfoDirective,
-    ClickWithWarningDirective
+    ClickWithWarningDirective,
+    UnlessDirective,
+    RepeateDirective
   ],
   exports: [
     DateComponent,
@@ -72,7 +77,9 @@ import { ClickWithWarningDirective } from './controls/click-with-warning.directi
     DialogOutletComponent,
     DemoDialogComponent,
     InfoDirective,
-    ClickWithWarningDirective
+    ClickWithWarningDirective,
+    UnlessDirective,
+    RepeateDirective
   ]
 })
 export class SharedModule { }

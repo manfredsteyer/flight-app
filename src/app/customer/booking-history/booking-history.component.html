@@ -25,6 +25,25 @@
 
 </app-tabbed-pane>
 
+<ng-template [appUnless]="flights.length == 0">
+    <div>{{flights.length}} Flüge!</div>
+</ng-template>
+
+<div template="appUnless: flights.length == 0">
+    <div>{{flights.length}} Flüge!</div>
+</div>
+
+<div *appUnless="flights.length == 0 as x">
+    <div>{{flights.length}} {{x}} Flüge!</div>
+</div>
+
+<div *appRepeate="let flight of flights; let i = index">
+    <div>{{i}}: {{flight | json}}</div>
+</div>
+
+<ng-template appRepeate [appRepeateOf]="flights" let-flight let-i="index">
+    <div>{{flight | json}}</div>
+</ng-template>
 
 <button (appClickWithWarning)="delete()" #cww="clickWithWarning">Delete</button>
 <button (click)="cww.handleClick(false)">Don't ask questions!</button>
