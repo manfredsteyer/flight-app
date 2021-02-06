@@ -22,6 +22,7 @@ import { TableFieldDirective } from './controls/data-table/table-field.directive
 import { CustomTemplateOutletDirective } from './controls/data-table/custom-template-outlet.directive';
 import { DialogOutletComponent } from './controls/dialog/dialog-outlet/dialog-outlet.component';
 import { DemoDialogComponent } from './controls/dialog/demo-dialog/demo-dialog.component';
+import { CustomComponentOutletDirective } from './controls/dialog/custom-component-outlet.directive';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { DemoDialogComponent } from './controls/dialog/demo-dialog/demo-dialog.c
     TableFieldDirective,
     CustomTemplateOutletDirective,
     DialogOutletComponent,
-    DemoDialogComponent
+    DemoDialogComponent,
+    CustomComponentOutletDirective
   ],
   exports: [
     DateComponent,
@@ -66,7 +68,8 @@ import { DemoDialogComponent } from './controls/dialog/demo-dialog/demo-dialog.c
     TableFieldDirective,
     CustomTemplateOutletDirective,
     DialogOutletComponent,
-    DemoDialogComponent
+    DemoDialogComponent,
+    CustomComponentOutletDirective
   ]
 })
 export class SharedModule {
