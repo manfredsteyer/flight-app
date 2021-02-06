@@ -1,3 +1,5 @@
+// src/app/shared/controls/info.directive.ts
+
 import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({

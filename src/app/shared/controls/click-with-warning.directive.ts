@@ -3,7 +3,8 @@
 import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
 
 @Directive({
-  selector: '[appClickWithWarning]'
+  selector: '[appClickWithWarning]',
+  exportAs: 'clickWithWarning'
 })
 export class ClickWithWarningDirective implements OnInit {
 
@@ -15,9 +16,9 @@ export class ClickWithWarningDirective implements OnInit {
   constructor(private elementRef: ElementRef) {
   }
 
-  @HostListener('click', ['$event'])
-  handleClick($event: MouseEvent): void {
-      if ($event.shiftKey || confirm(this.warning)) {
+  @HostListener('click', ['$event.shiftKey'])
+  handleClick(shiftKey: boolean): void {
+      if (shiftKey || confirm(this.warning)) {
           this.appClickWithWarning.emit();
       }
   }

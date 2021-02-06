@@ -9,13 +9,13 @@ import { DIALOG_DATA } from '../dialog.token';
 })
 export class DialogOutletComponent implements OnInit {
 
+  injector: Injector | null = null;
+  comp: Type<any> | null = null;
+
   constructor(
     private dialogService: DialogService,
     private parentInjector: Injector,
     ) { }
-
-  injector: Injector | null = null;
-  comp: Type<any> | null = null;
 
   ngOnInit(): void {
 

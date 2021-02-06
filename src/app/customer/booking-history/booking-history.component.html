@@ -26,16 +26,14 @@
 </app-tabbed-pane>
 
 
-<button (appClickWithWarning)="delete()">Delete</button>
+<button (appClickWithWarning)="delete()" #cww="clickWithWarning">Delete</button>
+<button (click)="cww.handleClick(false)">Don't ask questions!</button>
+
 
 <input [appInfo]="info">
 <ng-template #info>
-<p>
-    Important information!
-</p>
-<p>
-    Test!
-</p>
+    <p>Important information!</p>
+    <p>Test!</p>
 </ng-template>
 
 
