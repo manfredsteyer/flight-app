@@ -54,10 +54,25 @@
     </div>
 
     <div class="form-group">
+        <label>Date:</label>
+        <input [(ngModel)]="date" name="date" appDate class="form-control">
+        {{date}}
+    </div>
+
+    <div class="form-group">
+        <label>Date:</label>
+        <app-date [(ngModel)]="date" name="date"></app-date>
+        {{date}}
+    </div>
+
+    <div class="form-group">
         <input [(ngModel)]="delayFilter" name="delayFilter" type="checkbox" id="delayFilter">
         &nbsp;
         <label for="delayFilter">Delayed</label>
     </div>
+
+
+    
 
     <div class="form-group">
         <button class="btn btn-default" (click)="search()" [disabled]="!f?.valid">
