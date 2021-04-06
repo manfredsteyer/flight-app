@@ -4,11 +4,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DefaultFlightService } from './default-flight.service';
 import { Flight } from './flight';
+import { FlightBookingApiModule } from './flight-booking-api.module';
+import { FlightBookingModule } from './flight-booking.module';
 
 @Injectable({
   providedIn: 'root',
-  // Diese Umleitung hinzufügen:
-  useClass: DefaultFlightService
+  // Auf das Api-Modul des lazy Moduls verweisen:
+  useClass: FlightBookingApiModule
 })
 export abstract class FlightService {
 
