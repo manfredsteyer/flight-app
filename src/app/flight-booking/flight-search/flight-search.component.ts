@@ -45,4 +45,15 @@ export class FlightSearchComponent implements OnInit {
     this.selectedFlight = f;
   }
 
+  delay(): void {
+    // From ISO-String to Date object
+    const date = new Date(this.flights[0].date);
+
+    // Add 15 Minutes (1000 * 60 * 15 msec)
+    date.setTime(date.getTime() + 1000 * 60 * 15);
+
+    // Mudate original ISO-String
+    this.flights[0].date = date.toISOString();
+  }
+
 }

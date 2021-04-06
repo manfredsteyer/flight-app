@@ -63,6 +63,11 @@
         <button class="btn btn-default" (click)="search()" [disabled]="!f?.valid">
             Search
         </button>
+
+        <button *ngIf="flights.length > 0" class="btn btn-default" (click)="delay()">
+            Delay 1st Flight
+        </button>
+
     </div>
 </form>
 
