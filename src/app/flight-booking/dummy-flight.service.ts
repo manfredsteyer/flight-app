@@ -10,7 +10,13 @@ import { FlightService } from './flight.service';
 })
 export class DummyFlightService implements FlightService {
 
+  readonly flights$: Observable<Flight[]> = of([]);
+
   constructor() { }
+
+  load(from: string, to: string): void { }
+
+  delay(): void { }
 
   find(from: string, to: string): Observable<Flight[]> {
     return of([

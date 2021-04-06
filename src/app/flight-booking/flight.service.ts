@@ -12,6 +12,11 @@ import { Flight } from './flight';
 })
 export abstract class FlightService {
 
+  // Hinzufügen
+  abstract readonly flights$: Observable<Flight[]>;
+  abstract load(from: string, to: string): void;
+  abstract delay(): void;
+
   // Die Methode find ist nun abstrakt:
   abstract find(from: string, to: string): Observable<Flight[]>;
 
