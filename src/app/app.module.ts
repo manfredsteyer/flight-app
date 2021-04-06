@@ -19,7 +19,7 @@ import { BasketComponent } from './basket/basket.component';
       RouterModule.forRoot(APP_ROUTES),
       HttpClientModule,
       BrowserModule,
-      FlightBookingModule
+      // FlightBookingModule -- Würde Lazy Loading verhindern!!
    ],
    declarations: [
       AppComponent,

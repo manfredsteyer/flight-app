@@ -11,7 +11,10 @@ import { FlightEditComponent } from './flight-edit/flight-edit.component';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
     {
-        path: 'flight-booking',
+        // Alt:
+        // path: 'flight-booking',
+        // Neu:
+        path: '',
         component: FlightBookingComponent,
         children: [
             {

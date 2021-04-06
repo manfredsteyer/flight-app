@@ -21,6 +21,11 @@ export const APP_ROUTES: Routes = [
         component: AboutComponent
     },
     {
+        path: 'flight-booking',
+        loadChildren: () => import('./flight-booking/flight-booking.module')
+                                .then(m => m.FlightBookingModule)
+    },
+    {
         path: 'basket',
         component: BasketComponent,
         outlet: 'aux'

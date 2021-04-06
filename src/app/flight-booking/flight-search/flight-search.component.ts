@@ -1,6 +1,6 @@
 // src/app/flight-search/flight-search.component.ts
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Flight } from '../flight';
 import { FlightService } from '../flight.service';
 
@@ -30,10 +30,7 @@ export class FlightSearchComponent implements OnInit {
   };
 
   constructor(
-    private cd: ChangeDetectorRef,
     private flightService: FlightService) {
-
-      cd.markForCheck();
   }
 
   ngOnInit(): void {
