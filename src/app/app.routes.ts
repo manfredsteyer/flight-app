@@ -23,7 +23,10 @@ export const APP_ROUTES: Routes = [
     {
         path: 'flight-booking',
         loadChildren: () => import('./flight-booking/flight-booking.module')
-                                .then(m => m.FlightBookingModule)
+                                .then(m => m.FlightBookingModule),
+        data: {
+            preload: true
+        }
     },
     {
         path: 'basket',
