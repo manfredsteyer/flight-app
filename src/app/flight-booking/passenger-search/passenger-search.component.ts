@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 
 @Component({
   selector: 'app-passenger-search',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PassengerSearchComponent implements OnInit {
 
-  constructor() { }
+  userName = this.authService.userName;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }

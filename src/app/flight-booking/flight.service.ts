@@ -5,12 +5,11 @@ import { Observable } from 'rxjs';
 import { DefaultFlightService } from './default-flight.service';
 import { Flight } from './flight';
 import { FlightBookingApiModule } from './flight-booking-api.module';
-import { FlightBookingModule } from './flight-booking.module';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: FlightBookingApiModule,
   // Auf das Api-Modul des lazy Moduls verweisen:
-  useClass: FlightBookingApiModule
+  useClass: DefaultFlightService
 })
 export abstract class FlightService {
 

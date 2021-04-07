@@ -13,6 +13,7 @@ import { CityValidationDirective } from './validation/city-validation.directive'
 import { RoundTripValidationDirective } from './validation/round-trip-validation.directive';
 import { AsyncCityValidationDirective } from './validation/async-city-validation.directive';
 import { ValidationErrorsComponent } from './validation/validation-errors/validation-errors.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   imports: [
@@ -28,6 +29,9 @@ import { ValidationErrorsComponent } from './validation/validation-errors/valida
     RoundTripValidationDirective,
     AsyncCityValidationDirective,
     ValidationErrorsComponent
+  ],
+  providers: [
+    AuthService
   ],
   exports: [
     DateComponent,

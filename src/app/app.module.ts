@@ -13,9 +13,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { BasketComponent } from './basket/basket.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
    imports: [
+      // Hinzufügen:
+      SharedModule,
       RouterModule.forRoot(APP_ROUTES),
       HttpClientModule,
       BrowserModule,
