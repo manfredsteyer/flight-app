@@ -18,7 +18,7 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
    imports: [
       // Hinzufügen:
-      SharedModule,
+      SharedModule.forRoot(),
       RouterModule.forRoot(APP_ROUTES),
       HttpClientModule,
       BrowserModule,

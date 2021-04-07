@@ -1,6 +1,6 @@
 // src/app/shared/shared.module.ts
 
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DateComponent } from './date/date.component';
 import { CityPipe } from './city.pipe';
@@ -31,7 +31,7 @@ import { AuthService } from './auth/auth.service';
     ValidationErrorsComponent
   ],
   providers: [
-    AuthService
+    // Alle Provider hier entfernen!
   ],
   exports: [
     DateComponent,
@@ -46,4 +46,16 @@ import { AuthService } from './auth/auth.service';
     ValidationErrorsComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+  // Hinzufügen:
+  static forRoot(): ModuleWithProviders<SharedModule> {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        AuthService
+      ]
+    };
+  }
+
+}
