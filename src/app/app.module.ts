@@ -16,6 +16,7 @@ import { BasketComponent } from './basket/basket.component';
 import { SharedModule } from './shared/shared.module';
 import { CustomPreloadingStrategy } from './shared/custom-preloading.strategy';
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
    imports: [
@@ -23,6 +24,7 @@ import { AuthInterceptor } from './shared/auth/auth.interceptor';
       SharedModule.forRoot(),
       RouterModule.forRoot(APP_ROUTES, {preloadingStrategy: CustomPreloadingStrategy}),
       HttpClientModule,
+      OAuthModule.forRoot(),
       BrowserModule,
       // FlightBookingModule -- Würde Lazy Loading verhindern!!
    ],

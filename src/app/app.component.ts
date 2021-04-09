@@ -8,6 +8,8 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { authConfig } from './auth.config';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,14 @@ export class AppComponent implements OnInit {
   title = 'Hello World!';
   showWaitInfo = false;
 
-  constructor(private router: Router) { }
+  constructor(
+    private oauthService: OAuthService,
+    private router: Router) {
+
+      oauthService.configure(authConfig);
+      oauthService.loadDiscoveryDocumentAndTryLogin();
+
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {

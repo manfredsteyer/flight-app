@@ -2,6 +2,7 @@
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { OAuthService } from 'angular-oauth2-oidc';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Flight } from './flight';
 import { FlightService } from './flight.service';
@@ -14,7 +15,9 @@ export class DefaultFlightService implements FlightService {
   // eslint-disable-next-line @typescript-eslint/member-ordering
   readonly flights$: Observable<Flight[]> = this.flightSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private oauthService: OAuthService,
+    private http: HttpClient) { }
 
   load(from: string, to: string): void {
     this.find(from, to).subscribe(
@@ -31,7 +34,8 @@ export class DefaultFlightService implements FlightService {
     const url = 'http://www.angular.at/api/flight';
 
     const headers = new HttpHeaders()
-      .set('Accept', 'application/json');
+      .set('Accept', 'application/json')
+      .set('Authorization', this.oauthService.authorizationHeader());
 
     const params = new HttpParams()
       .set('from', from)
