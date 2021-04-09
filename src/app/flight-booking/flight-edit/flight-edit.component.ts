@@ -10,6 +10,8 @@ import { cityWithParamsValidator } from 'src/app/shared/validation/reactive/city
 import { asyncCityValidator } from 'src/app/shared/validation/reactive/async-city-validator';
 import { FlightService } from '../flight.service';
 import { roundTripValidator } from 'src/app/shared/validation/reactive/round-trip-validator';
+import { CanExit } from 'src/app/shared/exit/exit.guard';
+import { Observable, Subject } from 'rxjs';
 
 
 @Component({
@@ -17,7 +19,7 @@ import { roundTripValidator } from 'src/app/shared/validation/reactive/round-tri
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.scss']
 })
-export class FlightEditComponent implements OnInit {
+export class FlightEditComponent implements OnInit, CanExit {
 
   id = 0;
   showDetails = false;
@@ -25,6 +27,9 @@ export class FlightEditComponent implements OnInit {
   formGroup: FormGroup;
   routeFormGroup: FormGroup;
   categoriesFormArray: FormArray;
+
+  canExitSubject = new Subject<boolean>();
+  showWarning = false;
 
   metaData = [
     { label: 'FlugNummer', name: 'id', type: 'text' },
@@ -77,6 +82,18 @@ export class FlightEditComponent implements OnInit {
 
   }
 
+  decide(decision: boolean): void {
+    this.showWarning = false;
+    this.canExitSubject.next(decision);
+    this.canExitSubject.complete();
+  }
+
+  canExit(): Observable<boolean> {
+    this.canExitSubject = new Subject<boolean>();
+    this.showWarning = true;
+    return this.canExitSubject;
+  }
+
   addCategory(): void {
     this.categoriesFormArray.push(
       this.fb.group({
@@ -92,7 +109,6 @@ export class FlightEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.route.params.subscribe(p => {
       this.id = p.id;
       this.showDetails = p.showDetails;
