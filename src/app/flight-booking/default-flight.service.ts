@@ -40,6 +40,18 @@ export class DefaultFlightService implements FlightService {
     return this.http.get<Flight[]>(url, {headers, params});
   }
 
+  findById(id: string): Observable<Flight> {
+    const url = 'http://www.angular.at/api/flight';
+
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json');
+
+    const params = new HttpParams()
+      .set('id', id);
+
+    return this.http.get<Flight>(url, {headers, params});
+  }
+
   delay(): void {
     const oldFlights = this.flightSubject.getValue();
     const oldFlight = oldFlights[0];

@@ -18,6 +18,8 @@ export abstract class FlightService {
   abstract load(from: string, to: string): void;
   abstract delay(): void;
 
+  abstract findById(id: string): Observable<Flight>;
+
   // Die Methode find ist nun abstrakt:
   abstract find(from: string, to: string): Observable<Flight[]>;
 

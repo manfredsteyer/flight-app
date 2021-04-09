@@ -23,4 +23,8 @@ export class DummyFlightService implements FlightService {
       { id: 3, from: 'Frankfurt', to: 'Mallorca', date: '2022-01-02T20:00+01:00' }
     ]);
   }
+
+  findById(id: string): Observable<Flight> {
+    return of({ id: 1, from: 'Frankfurt', to: 'Flagranti', date: '2022-01-02T19:00+01:00' });
+  }
 }

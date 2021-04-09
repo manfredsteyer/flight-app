@@ -12,7 +12,7 @@ import { FlightService } from '../flight.service';
 import { roundTripValidator } from 'src/app/shared/validation/reactive/round-trip-validator';
 import { CanExit } from 'src/app/shared/exit/exit.guard';
 import { Observable, Subject } from 'rxjs';
-
+import { Flight } from '../flight';
 
 @Component({
   selector: 'app-flight-edit',
@@ -30,6 +30,8 @@ export class FlightEditComponent implements OnInit, CanExit {
 
   canExitSubject = new Subject<boolean>();
   showWarning = false;
+
+  flight: Flight | undefined;
 
   metaData = [
     { label: 'FlugNummer', name: 'id', type: 'text' },
@@ -112,6 +114,11 @@ export class FlightEditComponent implements OnInit, CanExit {
     this.route.params.subscribe(p => {
       this.id = p.id;
       this.showDetails = p.showDetails;
+    });
+
+    this.route.data.subscribe(data => {
+      this.flight = data.flight;
+      this.formGroup.patchValue(data.flight);
     });
   }
 
