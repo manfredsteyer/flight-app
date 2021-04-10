@@ -1,6 +1,10 @@
 // src/app/flight-search/flight-search.component.ts
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { loadFlights } from '../+state/flight-booking.actions';
+import { FlightBookingAppState, flightBookingFeatureKey } from '../+state/flight-booking.reducer';
+import { selectFlights, selectFlightsWithParams } from '../+state/flight-booking.selectors';
 import { Flight } from '../flight';
 import { FlightService } from '../flight.service';
 
@@ -19,7 +23,7 @@ export class FlightSearchComponent implements OnInit {
   // flights: Array<Flight> = [];
 
   // Hinzufügen:
-  flights$ = this.flightService.flights$;
+  flights$ = this.store.select(selectFlightsWithParams, [5]);
 
   selectedFlight: Flight | null = null;
   delayFilter = false;
@@ -30,6 +34,7 @@ export class FlightSearchComponent implements OnInit {
   };
 
   constructor(
+    private store: Store<FlightBookingAppState>,
     private flightService: FlightService) {
   }
 
@@ -44,7 +49,9 @@ export class FlightSearchComponent implements OnInit {
     // });
 
     // Hinzufügen:
-    this.flightService.load(this.from, this.to);
+    // this.flightService.load(this.from, this.to);
+
+    this.store.dispatch(loadFlights({from: this.from, to: this.to}));
 
   }
 

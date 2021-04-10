@@ -17,6 +17,11 @@ import { SharedModule } from './shared/shared.module';
 import { CustomPreloadingStrategy } from './shared/custom-preloading.strategy';
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { debug } from './+state/meta.reducer';
 
 @NgModule({
    imports: [
@@ -26,6 +31,11 @@ import { OAuthModule } from 'angular-oauth2-oidc';
       HttpClientModule,
       OAuthModule.forRoot(),
       BrowserModule,
+      StoreModule.forRoot({}, {
+         metaReducers: [debug]
+      }),
+      EffectsModule.forRoot([]),
+      !environment.production ? StoreDevtoolsModule.instrument() : []
       // FlightBookingModule -- Würde Lazy Loading verhindern!!
    ],
    declarations: [

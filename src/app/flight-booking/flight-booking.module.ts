@@ -13,6 +13,10 @@ import { FlightEditComponent } from './flight-edit/flight-edit.component';
 // ReactiveFormsMoudle hinzufügen:
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlightBookingApiModule } from './flight-booking-api.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromFlightBooking from './+state/flight-booking.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { FlightBookingEffects } from './+state/flight-booking.effects';
 
 @NgModule({
   imports: [
@@ -22,7 +26,9 @@ import { FlightBookingApiModule } from './flight-booking-api.module';
 
     // Einfügen:
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature(fromFlightBooking.flightBookingFeatureKey, fromFlightBooking.reducer),
+    EffectsModule.forFeature([FlightBookingEffects])
   ],
   declarations: [
     FlightSearchComponent,
