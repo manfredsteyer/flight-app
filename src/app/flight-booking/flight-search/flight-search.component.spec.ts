@@ -10,9 +10,12 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { FlightService } from '../flight.service';
 import { DummyFlightService } from '../dummy-flight.service';
 
+// import { of } from 'rxjs';
+
 fdescribe('FlightSearchComponent', () => {
   let component: FlightSearchComponent;
   let fixture: ComponentFixture<FlightSearchComponent>;
+  let flightService: FlightService;
 
   beforeEach(async () => {
     // Prüfling und seine Abhängigkeiten hinterlegen:
@@ -42,6 +45,17 @@ fdescribe('FlightSearchComponent', () => {
     // Komponenteninstnaz abrufen
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    flightService = fixture.debugElement.injector.get(FlightService);
+    spyOn(flightService, 'find').and.callThrough();
+
+    // Alternativen
+    // Einen fixen Wert zurückliefern
+    // spyOn(flightService, 'find').and.returnValue(of([{id: 1, from: 'A', to: 'B', date: ''}]));
+    // Eine Fake-Implementierung (Mock) aufrufen
+    // spyOn(flightService, 'find').and.callFake((from, to) => of([{id: 1, from: 'A', to: 'B', date: ''}]));
+    // Einen Fehler werfen
+    // spyOn(flightService, 'find').and.throwError(new Error('Manfred needs some coffee!'));
   });
 
   // Anpassen:
@@ -59,6 +73,12 @@ fdescribe('FlightSearchComponent', () => {
     component.search();
 
     expect(component.flights.length).toBe(3);
+    expect(flightService.find).toHaveBeenCalled();
+
+    // Alternativen:
+    // expect(flightService.find).toHaveBeenCalledWith('Hamburg', 'Graz');
+    // expect(flightService.find).toHaveBeenCalledTimes(1);
+
   });
 
   it('should *not* search for flights *without* from and to', () => {
@@ -67,6 +87,7 @@ fdescribe('FlightSearchComponent', () => {
     component.search();
 
     expect(component.flights.length).toBe(0);
+    expect(flightService.find).not.toHaveBeenCalled();
   });
 
 });
