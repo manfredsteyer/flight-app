@@ -6,9 +6,7 @@ import { Observable } from 'rxjs';
 import { Flight } from './flight';
 import { FlightService } from './flight.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DefaultFlightService implements FlightService {
 
   constructor(private http: HttpClient) { }

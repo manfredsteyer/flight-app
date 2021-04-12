@@ -1,7 +1,7 @@
 // src/app/flight-booking/flight-search/flight-search.component.spec.ts
 
 import { HttpClientModule } from '@angular/common/http';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
 import { FlightSearchComponent } from './flight-search.component';
 
 // Hinzufügen:
@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { FlightService } from '../flight.service';
 import { DummyFlightService } from '../dummy-flight.service';
+import { By } from '@angular/platform-browser';
 
 // import { of } from 'rxjs';
 
@@ -78,7 +79,6 @@ fdescribe('FlightSearchComponent', () => {
     // Alternativen:
     // expect(flightService.find).toHaveBeenCalledWith('Hamburg', 'Graz');
     // expect(flightService.find).toHaveBeenCalledTimes(1);
-
   });
 
   it('should *not* search for flights *without* from and to', () => {
@@ -89,5 +89,6 @@ fdescribe('FlightSearchComponent', () => {
     expect(component.flights.length).toBe(0);
     expect(flightService.find).not.toHaveBeenCalled();
   });
+
 
 });
