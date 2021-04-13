@@ -1,36 +1,41 @@
 <?xml version="1.0"?>
-<testsuite name="Chrome 89.0.4389.114 (Windows 10)" package="" timestamp="2021-04-12T23:05:24" id="0" hostname="Laptop-Manfred" tests="28" errors="0" failures="0" time="0.166">
+<testsuite name="Chrome 89.0.4389.114 (Windows 10)" package="" timestamp="2021-04-13T00:15:54" id="0" hostname="Laptop-Manfred" tests="29" errors="0" failures="0" time="0.258">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"/>
   </properties>
-  <testcase name="Add correctly adds 1 and 2" time="0.032" classname="Chrome_89_0_4389_114_(Windows_10).Add"/>
-  <testcase name="DefaultFlightServiceService should call API with parameters" time="0.009" classname="Chrome_89_0_4389_114_(Windows_10).DefaultFlightServiceService"/>
-  <testcase name="FlightSearchComponent should *not* search for flights *without* from and to" time="0.064" classname="Chrome_89_0_4389_114_(Windows_10).FlightSearchComponent"/>
-  <testcase name="FlightSearchComponent should have no loaded flights initially" time="0.026" classname="Chrome_89_0_4389_114_(Windows_10).FlightSearchComponent"/>
+  <testcase name="Add correctly adds 1 and 2" time="0.033" classname="Chrome_89_0_4389_114_(Windows_10).Add"/>
+  <testcase name="DefaultFlightServiceService should call API with parameters" time="0.012" classname="Chrome_89_0_4389_114_(Windows_10).DefaultFlightServiceService"/>
+  <testcase name="FlightSearchComponent should have a disabled search button w/o params" time="0.121" classname="Chrome_89_0_4389_114_(Windows_10).FlightSearchComponent"/>
+  <testcase name="FlightSearchComponent should *not* search for flights *without* from and to" time="0.035" classname="Chrome_89_0_4389_114_(Windows_10).FlightSearchComponent"/>
+  <testcase name="FlightSearchComponent should search for flights when from and to are given" time="0.018" classname="Chrome_89_0_4389_114_(Windows_10).FlightSearchComponent"/>
+  <testcase name="FlightSearchComponent should have no loaded flights initially" time="0.019" classname="Chrome_89_0_4389_114_(Windows_10).FlightSearchComponent"/>
   <testcase name="FlightSearchComponent should have no loaded flights initially" time="0.018" classname="Chrome_89_0_4389_114_(Windows_10).FlightSearchComponent"/>
-  <testcase name="FlightSearchComponent should search for flights when from and to are given" time="0.017" classname="Chrome_89_0_4389_114_(Windows_10).FlightSearchComponent"/>
-  <testcase name="AsyncCityValidationDirective should create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).AsyncCityValidationDirective">
-    <skipped/>
-  </testcase>
-  <testcase name="FlightEditComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).FlightEditComponent">
-    <skipped/>
-  </testcase>
+  <testcase name="CityPipe should transform Hamburg to HAM" time="0.002" classname="Chrome_89_0_4389_114_(Windows_10).CityPipe"/>
   <testcase name="FlightCardComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).FlightCardComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="FlightBookingComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).FlightBookingComponent">
     <skipped/>
   </testcase>
   <testcase name="DummyFlightServiceService should be created" time="0" classname="Chrome_89_0_4389_114_(Windows_10).DummyFlightServiceService">
     <skipped/>
   </testcase>
-  <testcase name="StatusFilterPipe create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).StatusFilterPipe">
+  <testcase name="AsyncCityValidationDirective should create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).AsyncCityValidationDirective">
+    <skipped/>
+  </testcase>
+  <testcase name="CityValidationDirective should create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).CityValidationDirective">
     <skipped/>
   </testcase>
   <testcase name="StatusColorPipe create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).StatusColorPipe">
     <skipped/>
   </testcase>
-  <testcase name="AppComponent should create the app" time="0" classname="Chrome_89_0_4389_114_(Windows_10).AppComponent">
+  <testcase name="BasketComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).BasketComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PassengerSearchComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).PassengerSearchComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="HomeComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).HomeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AboutComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).AboutComponent">
     <skipped/>
   </testcase>
   <testcase name="AppComponent should have as title 'flight-app'" time="0" classname="Chrome_89_0_4389_114_(Windows_10).AppComponent">
@@ -39,40 +44,34 @@
   <testcase name="AppComponent should render title" time="0" classname="Chrome_89_0_4389_114_(Windows_10).AppComponent">
     <skipped/>
   </testcase>
-  <testcase name="BasketComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).BasketComponent">
+  <testcase name="AppComponent should create the app" time="0" classname="Chrome_89_0_4389_114_(Windows_10).AppComponent">
     <skipped/>
   </testcase>
-  <testcase name="DateComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).DateComponent">
+  <testcase name="FlightBookingComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).FlightBookingComponent">
     <skipped/>
   </testcase>
-  <testcase name="AboutComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).AboutComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CityService should be created" time="0" classname="Chrome_89_0_4389_114_(Windows_10).CityService">
-    <skipped/>
-  </testcase>
-  <testcase name="CityPipe create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).CityPipe">
+  <testcase name="StatusFilterPipe create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).StatusFilterPipe">
     <skipped/>
   </testcase>
   <testcase name="NotFoundComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).NotFoundComponent">
     <skipped/>
   </testcase>
-  <testcase name="HomeComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).HomeComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PassengerSearchComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).PassengerSearchComponent">
+  <testcase name="RoundTripValidationDirective should create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).RoundTripValidationDirective">
     <skipped/>
   </testcase>
   <testcase name="ValidationErrorsComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).ValidationErrorsComponent">
     <skipped/>
   </testcase>
-  <testcase name="RoundTripValidationDirective should create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).RoundTripValidationDirective">
-    <skipped/>
-  </testcase>
   <testcase name="FlightService should be created" time="0" classname="Chrome_89_0_4389_114_(Windows_10).FlightService">
     <skipped/>
   </testcase>
-  <testcase name="CityValidationDirective should create an instance" time="0" classname="Chrome_89_0_4389_114_(Windows_10).CityValidationDirective">
+  <testcase name="FlightEditComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).FlightEditComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CityService should be created" time="0" classname="Chrome_89_0_4389_114_(Windows_10).CityService">
+    <skipped/>
+  </testcase>
+  <testcase name="DateComponent should create" time="0" classname="Chrome_89_0_4389_114_(Windows_10).DateComponent">
     <skipped/>
   </testcase>
   <system-out>

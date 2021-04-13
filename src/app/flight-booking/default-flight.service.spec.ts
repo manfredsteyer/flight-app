@@ -3,6 +3,8 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { DefaultFlightService } from './default-flight.service';
+import { SharedModule } from '../shared/shared.module';
+import { CityPipe } from '../shared/city.pipe';
 
 fdescribe('DefaultFlightServiceService', () => {
   let service: DefaultFlightService;
@@ -11,7 +13,7 @@ fdescribe('DefaultFlightServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       // HttpClientTestingModule (!) anstatt HttpClientModule importieren:
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, SharedModule],
 
       // Kann beim Einsatz von Tree-shakable Providers entfallen:
       providers: [DefaultFlightService]

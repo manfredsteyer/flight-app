@@ -34,7 +34,7 @@
     </div>
 
 
-    <div class="error" *ngIf="f?.controls?.from?.hasError('required')">
+    <div class="error error-required" *ngIf="f?.controls?.from?.hasError('required')">
         Dieses Feld ist ein Pflichtfeld.
     </div>
     <div class="error" *ngIf="f?.controls?.from?.hasError('minlength')">
@@ -60,7 +60,7 @@
     </div>
 
     <div class="form-group">
-        <button class="btn btn-default" (click)="search()" [disabled]="!from && !to">
+        <button class="btn btn-default" (click)="search()" [disabled]="!from || !to">
             Search
         </button>
     </div>

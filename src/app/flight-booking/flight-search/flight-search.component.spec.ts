@@ -90,5 +90,45 @@ fdescribe('FlightSearchComponent', () => {
     expect(flightService.find).not.toHaveBeenCalled();
   });
 
+  it('should have a disabled search button w/o params', async () => {
 
+    await fixture.whenStable();
+
+    // get from
+    const from = fixture
+                  .debugElement
+                  .query(By.css('input[name=from]'))
+                  .nativeElement;
+
+    from.value = '';
+    from.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    // get to
+    const to = fixture
+               .debugElement
+               .query(By.css('input[name=to]'))
+               .nativeElement;
+
+    to.value = '';
+    to.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    // Bonus: Direktive testen
+    // const count = fixture
+    //               .debugElement
+    //               .queryAll(By.css('.error-required'))
+    //               .length;
+
+    // expect(count).toBe(1);
+
+    // get disabled
+    const disabled = fixture
+                     .debugElement
+                     .query(By.css('button'))
+                     .properties.disabled;
+
+    expect(disabled).toBeTruthy();
+
+  });
 });
