@@ -1,11 +1,16 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { fakeAsync, flush, flushMicrotasks, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
+import { delay, map, tap } from 'rxjs/operators';
 import { DummyFlightService } from '../flight-booking/dummy-flight.service';
 import { FlightService } from '../flight-booking/flight.service';
 import { FlightLookaheadService } from './flight-typeahead.service';
 import { OnlineService } from './online.service';
+
+import { cold, hot } from 'jasmine-marbles';
+import { marbles } from 'rxjs-marbles';
+import { Flight } from '../flight-booking/flight';
 
 @Injectable()
 class DummyOnlineService {
@@ -93,5 +98,25 @@ fdescribe('FlightLookaheadService', () => {
 
   }));
 
+  it('should not debounce (marbles)', marbles((m) => {
+
+    cold('G 310ms W', {G: 'Graz', W: 'Wien'}).subscribe(v =>
+      service.search(v)
+    );
+
+    const expected = {
+      G: JSON.stringify(['Graz', 'Graz', 'Graz']),
+      W: JSON.stringify(['Wien', 'Wien', 'Wien'])
+    };
+
+    const toCityList = (flights: Flight[]) => JSON.stringify(
+        flights.map(f => f.from)
+    );
+
+    m.expect(service.flights$.pipe(map(f => toCityList(f)))).toBeObservable('300ms G 310ms W', expected);
+
+  }));
 
 });
+
+
