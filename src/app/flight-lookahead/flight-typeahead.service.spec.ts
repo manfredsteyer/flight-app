@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { fakeAsync, flush, flushMicrotasks, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { delay, map, tap } from 'rxjs/operators';
+import { delay, map, shareReplay, tap } from 'rxjs/operators';
 import { DummyFlightService } from '../flight-booking/dummy-flight.service';
 import { FlightService } from '../flight-booking/flight.service';
 import { FlightLookaheadService } from './flight-typeahead.service';
@@ -14,8 +14,17 @@ import { Flight } from '../flight-booking/flight';
 
 @Injectable()
 class DummyOnlineService {
-  online$ = new BehaviorSubject<boolean>(true);
+  // online$ = new BehaviorSubject<boolean>(true);
+
+  // Das geht:
+  online$ = cold('f 500ms t', { f: false, t: true})
+    .pipe(shareReplay({refCount:true, bufferSize: 1}));
+
+  // Das geht nicht (da wird über flights$ nichts emitted):
+  // online$ = hot('^f 500ms t', { f: false, t: true});
+    // Wie bekomme ich übrigens ein hot multicast observable?
 }
+
 
 fdescribe('FlightLookaheadService', () => {
   let service: FlightLookaheadService;
@@ -117,6 +126,33 @@ fdescribe('FlightLookaheadService', () => {
 
   }));
 
+
+  fit('should not debounce (marbles2)', marbles((m) => {
+
+    service.search('');
+    cold('500ms G 310ms W', {G: 'Graz', W: 'Wien'}).subscribe(v =>
+      service.search(v)
+    );
+
+    const expected = {
+      G: JSON.stringify(['Graz', 'Graz', 'Graz']),
+      W: JSON.stringify(['Wien', 'Wien', 'Wien'])
+    };
+
+    const toCityList = (flights: Flight[]) => JSON.stringify(
+        flights.map(f => f.from)
+    );
+
+    hot('^f 500ms t', { f: false, t: true}).subscribe(x => {
+      console.log('hallo', x);
+    });
+
+    m.expect(service.flights$.pipe(map(f => toCityList(f)))).toBeObservable('500ms 300ms G 310ms W', expected);
+
+  }));
+
 });
+
+
 
 
