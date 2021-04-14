@@ -13,16 +13,20 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { BasketComponent } from './basket/basket.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlightLookaheadComponent } from './flight-lookahead/flight-typeahead.component';
 
 @NgModule({
    imports: [
       RouterModule.forRoot(APP_ROUTES),
       HttpClientModule,
       BrowserModule,
-      FlightBookingModule
+      FlightBookingModule,
+      ReactiveFormsModule,
    ],
    declarations: [
       AppComponent,
+      FlightLookaheadComponent,
       SidebarComponent,
       NavbarComponent,
       HomeComponent,
