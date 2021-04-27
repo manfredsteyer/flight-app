@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { fakeAsync, flush, flushMicrotasks, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { delay, map, shareReplay, tap } from 'rxjs/operators';
+import { BehaviorSubject, interval, Observable, of, timer } from 'rxjs';
+import { delay, first, map, mapTo, shareReplay, startWith, take, tap } from 'rxjs/operators';
 import { DummyFlightService } from '../flight-booking/dummy-flight.service';
 import { FlightService } from '../flight-booking/flight.service';
 import { FlightLookaheadService } from './flight-typeahead.service';
@@ -14,11 +14,16 @@ import { Flight } from '../flight-booking/flight';
 
 @Injectable()
 class DummyOnlineService {
-  // online$ = new BehaviorSubject<boolean>(true);
+  //online$ = new BehaviorSubject<boolean>(true);
 
   // Das geht:
-  online$ = cold('f 500ms t', { f: false, t: true})
-    .pipe(shareReplay({refCount:true, bufferSize: 1}));
+  // online$ = cold('f 500ms t', { f: false, t: true})
+  //   .pipe(shareReplay({refCount:true, bufferSize: 1}));
+
+  //innerOnline$ = cold('t', { f: false, t: true});
+
+  //online$ = timer(2000).pipe(startWith(true), mapTo(true), shareReplay({refCount:true, bufferSize: 1}));
+  online$ = cold('t 2000ms', {t: true}).pipe(shareReplay({refCount:true, bufferSize: 1}));
 
   // Das geht nicht (da wird über flights$ nichts emitted):
   // online$ = hot('^f 500ms t', { f: false, t: true});
@@ -29,7 +34,9 @@ class DummyOnlineService {
 fdescribe('FlightLookaheadService', () => {
   let service: FlightLookaheadService;
 
-  beforeEach(() => {
+
+
+  beforeEach(marbles((m) => {
     TestBed.configureTestingModule({
       providers: [
         { provide: OnlineService, useClass: DummyOnlineService },
@@ -38,7 +45,7 @@ fdescribe('FlightLookaheadService', () => {
     });
 
     service = TestBed.inject(FlightLookaheadService);
-  });
+  }));
 
   it('should load flights', waitForAsync(() => {
 
@@ -127,7 +134,7 @@ fdescribe('FlightLookaheadService', () => {
   }));
 
 
-  fit('should not debounce (marbles2)', marbles((m) => {
+  it('should not debounce (marbles2)', marbles((m) => {
 
     service.search('');
     cold('500ms G 310ms W', {G: 'Graz', W: 'Wien'}).subscribe(v =>
@@ -143,11 +150,20 @@ fdescribe('FlightLookaheadService', () => {
         flights.map(f => f.from)
     );
 
-    hot('^f 500ms t', { f: false, t: true}).subscribe(x => {
-      console.log('hallo', x);
-    });
-
     m.expect(service.flights$.pipe(map(f => toCityList(f)))).toBeObservable('500ms 300ms G 310ms W', expected);
+
+  }));
+
+  fit('should unsubscribe', marbles((m) => {
+
+    // service.search('Graz');
+    // const sub = service.flights$.subscribe();
+    // cold('----').subscribe(x => {
+    //   sub.unsubscribe();
+    // });
+
+    const onlineService = TestBed.inject(OnlineService);
+    m.expect(onlineService.online$).toBeObservable('t---|', {t:true});
 
   }));
 
