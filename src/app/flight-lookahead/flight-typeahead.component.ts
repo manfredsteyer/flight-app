@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { combineLatest, interval, merge, Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, mapTo, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map, mapTo, shareReplay, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { Flight } from '../flight-booking/flight';
 import { FlightService } from '../flight-booking/flight.service';
 
@@ -26,7 +26,8 @@ export class FlightLookaheadComponent implements OnInit {
         distinctUntilChanged(),
         tap(online => {
             this.online = online;
-        })
+        }),
+        shareReplay({ refCount: true, bufferSize: 1 })
     );
 
     // Ziel

@@ -7,7 +7,10 @@
     <button type="button" (click)="refresh$.next($event)" class="btn btn-default">Refresh</button>
 </div>
 
-<div [ngStyle]="{'background-color': online ? 'green' : 'red'}">Online: {{online}}</div>
+<div [ngStyle]="{'background-color': (online$ | async) ? 'green' : 'red'}">Online: {{(online$ | async)}}</div>
+<div [ngStyle]="{'background-color': (online$ | async) ? 'green' : 'red'}">Online: {{(online$ | async)}}</div>
+<div [ngStyle]="{'background-color': (online$ | async) ? 'green' : 'red'}">Online: {{(online$ | async)}}</div>
+<div [ngStyle]="{'background-color': (online$ | async) ? 'green' : 'red'}">Online: {{(online$ | async)}}</div>
 
 <table class="table table-striped">
     <tr *ngFor="let f of flights$ | async">

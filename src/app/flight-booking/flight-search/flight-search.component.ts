@@ -34,14 +34,29 @@ export class FlightSearchComponent implements OnInit {
       return;
     }
 
-    this.flightService.find(this.from, this.to).subscribe({
-      next: (flights) => {
-        this.flights = flights;
-      },
-      error: (err) => {
-        console.debug('Error', err);
-      }
-    });
+    // this.flightService.find(this.from, this.to)
+    //   // .subscribe({
+    //   //   next: (flights) => {
+    //   //     this.flights = flights;
+    //   //   },
+    //   //   error: (err) => {
+    //   //     console.debug('Error', err);
+    //   //   }
+    //   // });
+
+    // this.flightService.find(this.from, this.to).subscribe();
+    // this.flightService.find(this.from, this.to).subscribe();
+    // this.flightService.find(this.from, this.to).subscribe();
+
+    this.flightService.find(this.from, this.to)
+      .subscribe({
+        next: (flights) => {
+          this.flights = flights;
+        },
+        error: (err) => {
+          console.debug('Error', err);
+        }
+      });
 
   }
 
