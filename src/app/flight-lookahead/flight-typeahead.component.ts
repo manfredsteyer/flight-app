@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { combineLatest, interval, Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { combineLatest, interval, merge, Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, mapTo, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { Flight } from '../flight-booking/flight';
 import { FlightService } from '../flight-booking/flight.service';
 
@@ -14,6 +14,8 @@ export class FlightLookaheadComponent implements OnInit {
     // Quellen
     control = new FormControl();
     input$ = this.control.valueChanges;
+
+    refresh$ = new Subject<Event>();
 
     // Nicht schön. Wir reden später darüber.
     online = false;
@@ -37,7 +39,17 @@ export class FlightLookaheadComponent implements OnInit {
             debounceTime(300),
         );
 
-        this.flights$ = combineLatest([debouncedInput$, this.online$]).pipe(
+        const inputRequest$ = combineLatest([debouncedInput$, this.online$]);
+
+        const refreshRequest$ = this.refresh$.pipe(
+            map(_ => this.control.value),
+            withLatestFrom(this.online$)
+        );
+
+        this.flights$ = merge(
+            refreshRequest$,
+            inputRequest$,
+        ).pipe(
             filter(([_, online]) => online),
             map(([input, _]) => input),
             switchMap(input => this.load(input))
@@ -47,6 +59,7 @@ export class FlightLookaheadComponent implements OnInit {
 
     // Noch eine Quelle
     load(from: string): Observable<Flight[]> {
+        console.log('from', from);
         return this.flightService.find(from, '');
     }
 

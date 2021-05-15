@@ -3,6 +3,8 @@
 <div class="control-group">
     <label>Stadt</label>
     <input [formControl]="control" class="form-control">
+
+    <button type="button" (click)="refresh$.next($event)" class="btn btn-default">Refresh</button>
 </div>
 
 <div [ngStyle]="{'background-color': online ? 'green' : 'red'}">Online: {{online}}</div>
