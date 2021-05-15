@@ -5,8 +5,6 @@
     <input [formControl]="control" class="form-control">
 </div>
 
-<div [ngStyle]="{'background-color': (online$ | async)? 'green' : 'red'}">Online: {{online$ | async}}</div>
-
 <table class="table table-striped">
     <tr *ngFor="let f of flights$ | async">
         <td>{{f.id}}</td>
