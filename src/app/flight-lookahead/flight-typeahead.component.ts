@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { combineLatest, interval, merge, Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, mapTo, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { combineLatest, interval, merge, Observable, of, Subject, throwError } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, filter, map, mapTo, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { Flight } from '../flight-booking/flight';
 import { FlightService } from '../flight-booking/flight.service';
 
@@ -39,8 +39,8 @@ export class FlightLookaheadComponent implements OnInit {
             debounceTime(300),
         );
 
-        //const inputRequest$ = combineLatest([debouncedInput$, this.online$]);
-        const inputRequest$ = debouncedInput$.pipe(withLatestFrom(this.online$));
+        const inputRequest$ = combineLatest([debouncedInput$, this.online$]);
+        // const inputRequest$ = debouncedInput$.pipe(withLatestFrom(this.online$));
 
         const refreshRequest$ = this.refresh$.pipe(
             map(_ => this.control.value),
@@ -53,7 +53,18 @@ export class FlightLookaheadComponent implements OnInit {
         ).pipe(
             filter(([_, online]) => online),
             map(([input, _]) => input),
-            switchMap(input => this.load(input))
+            switchMap(input => this.load(input).pipe(
+                // Inneres catchError
+                // catchError(err => {
+                //     console.error('err', err);
+                //     return of([]);
+                // })
+            )),
+            // Too late:
+            // catchError(err => {
+            //     console.error('err', err);
+            //     return of([]);
+            // })
         );
 
     }
@@ -61,7 +72,13 @@ export class FlightLookaheadComponent implements OnInit {
     // Noch eine Quelle
     load(from: string): Observable<Flight[]> {
         console.log('from', from);
-        return this.flightService.find(from, '');
+        return this.flightService.find(from, '').pipe(
+            catchError(err => {
+                console.error('err', err);
+                return of([]);
+                // return throwError(err);
+            })
+        );
     }
 
     ngOnInit(): void {
