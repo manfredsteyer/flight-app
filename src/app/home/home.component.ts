@@ -1,8 +1,13 @@
+// src/app/home/home.component.ts
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, from, interval, merge, Observable, of, ReplaySubject, Subject, throwError, timer } from 'rxjs';
+import { debounceTime, delay, distinctUntilChanged, filter, map, take, tap } from 'rxjs/operators';
 import { Flight } from '../flight-booking/flight';
+import { simpleInterval, simpleObservable } from '../shared/observable-factories';
+
+
 
 @Component({
   selector: 'app-home',
@@ -54,6 +59,49 @@ export class HomeComponent implements OnInit {
     });
 
     setTimeout(() => sub.unsubscribe(), 2500);
+
+    of(4711).subscribe(v => console.log(v));
+
+    throwError('Need Coffee!').subscribe({
+      next: (next) => console.error('next', next),
+      error: (err) => console.error('err', err),
+      complete: () => console.log('complete')
+    });
+
+    interval(1000).pipe(take(5)).subscribe(v => console.log(v));
+
+    from([1, 2, 3]).subscribe(v => console.log('next', v));
+
+    interval(200).pipe(
+      take(5),
+      debounceTime(300)
+    ).subscribe(v => console.log(v));
+
+    interval(200).pipe(
+      take(5),
+      filter(v => v % 2 === 0)
+    ).subscribe(v => console.log(v));
+
+    from([1, 1, 2, 2, 1]).pipe(
+      distinctUntilChanged()
+    )
+    .subscribe(v => console.log('after distinct', v));
+
+
+    merge(
+      from([1, 2, 3]),
+      from([4, 5, 6])
+    ).subscribe(v => console.log(v));
+
+
+    interval(200).pipe(
+      take(5),
+      delay(2000),
+      tap(v => console.debug('before filter', v)),
+      filter(v => v % 2 === 0)
+    ).subscribe(v => console.log(v));
+    
   }
 
 }
+

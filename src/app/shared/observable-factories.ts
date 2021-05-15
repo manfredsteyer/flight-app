@@ -1,3 +1,5 @@
+// src/app/shared/observable-factories.ts
+
 //
 // These examples are provided for illustrative purposes only.
 // In practice, one often falls back on existing factories
@@ -12,7 +14,7 @@ export function simpleObservable(): Observable<number> {
 
         observer.next(4711);
         observer.next(815);
-        observer.error('Manfred braucht einen Kaffee!');
+        // observer.error('Manfred braucht einen Kaffee!');
         observer.complete();
 
         return () => {
@@ -32,7 +34,7 @@ export function simpleInterval(): Observable<number> {
 
             counter++;
             if (counter >= 3) {
-                clearInterval(handle);
+                //clearInterval(handle);
                 observer.complete();
             }
         }, 1000);
