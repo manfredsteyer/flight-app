@@ -39,7 +39,8 @@ export class FlightLookaheadComponent implements OnInit {
             debounceTime(300),
         );
 
-        const inputRequest$ = combineLatest([debouncedInput$, this.online$]);
+        //const inputRequest$ = combineLatest([debouncedInput$, this.online$]);
+        const inputRequest$ = debouncedInput$.pipe(withLatestFrom(this.online$));
 
         const refreshRequest$ = this.refresh$.pipe(
             map(_ => this.control.value),
