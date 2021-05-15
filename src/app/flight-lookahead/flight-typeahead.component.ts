@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { combineLatest, interval, merge, Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, mapTo, shareReplay, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { 
+    debounceTime, distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 import { Flight } from '../flight-booking/flight';
 import { FlightService } from '../flight-booking/flight.service';
 
@@ -9,7 +10,9 @@ import { FlightService } from '../flight-booking/flight.service';
     selector: 'app-flight-typeahead',
     templateUrl: './flight-typeahead.component.html'
 })
-export class FlightLookaheadComponent implements OnInit {
+export class FlightLookaheadComponent implements OnInit, OnDestroy {
+
+    close$ = new Subject<void>();
 
     // Quellen
     control = new FormControl();
@@ -22,6 +25,7 @@ export class FlightLookaheadComponent implements OnInit {
 
     online$ = interval(2000).pipe(
         startWith(-1),
+        tap(counter => console.debug('counter', counter)),
         map(() => Math.random() < 0.5),
         distinctUntilChanged(),
         tap(online => {
@@ -56,6 +60,13 @@ export class FlightLookaheadComponent implements OnInit {
             switchMap(input => this.load(input))
         );
 
+        this.flights$
+            .pipe(takeUntil(this.close$))
+            .subscribe(f => console.debug('flights', f));
+
+    }
+    ngOnDestroy(): void {
+        this.close$.next();
     }
 
     // Noch eine Quelle
