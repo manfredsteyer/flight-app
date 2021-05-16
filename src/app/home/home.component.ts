@@ -7,7 +7,25 @@ import { debounceTime, delay, distinctUntilChanged, filter, map, take, tap } fro
 import { Flight } from '../flight-booking/flight';
 import { simpleInterval, simpleObservable } from '../shared/observable-factories';
 
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+function timerAsPromise(time: number): Promise<number> {
+  return new Promise<number>((resolve, reject) => {
 
+    if (time < 0) {
+      reject();
+    }
+
+    setTimeout(() => resolve(time), time);
+  });
+}
+
+from(timerAsPromise(500)).pipe(
+  map(msec => msec / 1000)
+)
+.subscribe(v => console.debug('sec', v));
+
+const promise = interval(500).pipe(take(4)).toPromise();
+promise.then(v => console.debug('promise', v));
 
 @Component({
   selector: 'app-home',
@@ -100,7 +118,7 @@ export class HomeComponent implements OnInit {
       tap(v => console.debug('before filter', v)),
       filter(v => v % 2 === 0)
     ).subscribe(v => console.log(v));
-    
+
   }
 
 }
