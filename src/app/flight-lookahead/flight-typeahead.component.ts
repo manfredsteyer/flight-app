@@ -10,6 +10,8 @@ export class FlightLookaheadComponent implements OnInit {
 
     flights$ = this.service.flights$;
     online$ = this.service.online$;
+    error$ = this.service.error$;
+
     control = new FormControl();
 
     constructor(private service: FlightLookaheadService) {
@@ -19,6 +21,10 @@ export class FlightLookaheadComponent implements OnInit {
         this.control.valueChanges.subscribe(from => {
             this.service.search(from);
         });
+    }
+
+    refresh(): void {
+        this.service.refresh();
     }
 
 }

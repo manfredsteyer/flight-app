@@ -1,8 +1,17 @@
 <h2 class="title">Lookahead</h2>
 
+<div *ngIf="error$ | async as error">
+    {{error}}
+</div>
+
+<!-- <div *ngIf="error$ | async">
+    {{error$ | async}}
+</div> -->
+
 <div class="control-group">
     <label>Stadt</label>
     <input [formControl]="control" class="form-control">
+    <button (click)="refresh()" class="btn btn-default">Refresh</button>
 </div>
 
 <div [ngStyle]="{'background-color': (online$ | async)? 'green' : 'red'}">Online: {{online$ | async}}</div>
