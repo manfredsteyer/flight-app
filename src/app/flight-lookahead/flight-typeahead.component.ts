@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { combineLatest, interval, merge, Observable, Subject } from 'rxjs';
+import { interval, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, mapTo, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { Flight } from '../flight-booking/flight';
 import { FlightService } from '../flight-booking/flight.service';
@@ -39,18 +39,8 @@ export class FlightLookaheadComponent implements OnInit {
             debounceTime(300),
         );
 
-        //const inputRequest$ = combineLatest([debouncedInput$, this.online$]);
-        const inputRequest$ = debouncedInput$.pipe(withLatestFrom(this.online$));
-
-        const refreshRequest$ = this.refresh$.pipe(
-            map(_ => this.control.value),
-            withLatestFrom(this.online$)
-        );
-
-        this.flights$ = merge(
-            refreshRequest$,
-            inputRequest$,
-        ).pipe(
+        this.flights$ = debouncedInput$.pipe(
+            withLatestFrom(this.online$),
             filter(([_, online]) => online),
             map(([input, _]) => input),
             switchMap(input => this.load(input))
