@@ -50,14 +50,14 @@ for (const entry of namen) {
 
 
 
-const f: Function = function() {
+const f: Function = function () {
     console.debug('Hallo Welt!');
 };
 
 f(); // Aufruf von f
 
 type MathFn = (a: number, b: number) => number;
-const func: MathFn = function(a: number, b: number) {
+const func: MathFn = function (a: number, b: number) {
     return a + b;
 };
 console.debug(func(1, 2));
@@ -229,3 +229,100 @@ function div(a: number, b: number): number {
 
 
 const fm2 = new FlightManager(null);
+
+setTimeout(() => {
+    console.log('Timeout!');
+}, 1000);
+
+setTimeout(() => {
+    console.log('Phase 1');
+    setTimeout(() => {
+        console.log('Phase 2');
+        setTimeout(() => {
+            console.log('Phase 3');
+            setTimeout(() => {
+                console.log('Phase 4');
+            }, 1000);
+        }, 1000);
+    }, 1000);
+}, 1000);
+
+
+function timeout(time: number): Promise<number> {
+    return new Promise((resolve, reject) => {
+
+        if (time < 0) {
+            // Send error!
+            reject(`Don't be that negative!`);
+            return;
+        }
+
+        setTimeout(() => {
+            resolve(time);
+        }, time);
+
+    });
+}
+
+timeout(1000)
+    .then(result => console.debug('Timeout!', result))
+    .catch(error => console.debug('error', error));
+
+timeout(1000)
+    .then(() => {
+        console.debug('Phase 1!');
+        return timeout(1000);
+    })
+    .then(() => {
+        console.debug('Phase 2!');
+        return timeout(1000);
+    })
+    .then(() => {
+        console.debug('Phase 3!');
+        return timeout(1000);
+    })
+    .then(() => {
+        console.debug('Phase 4!');
+        return timeout(1000);
+    })
+    .catch(error => console.error('error', error));
+
+
+async function timeout2(time: number): Promise<number> {
+    return new Promise((resolve, reject) => {
+
+        if (time < 0) {
+            // Send error!
+            reject(`Don't be that negative!`);
+            return;
+        }
+
+        setTimeout(() => {
+            resolve(time);
+        }, time);
+
+    });
+}
+
+async function caller() {
+    let result;
+
+    try {
+        result = await timeout2(1000);
+        console.log('Phase 1', result);
+
+        result = await timeout2(1000);
+        console.log('Phase 2', result);
+
+        result = await timeout2(1000);
+        console.log('Phase 3', result);
+
+        result = await timeout2(1000);
+        console.log('Phase 4', result);
+    }
+    catch (error) {
+        console.error('error', error);
+    }
+}
+
+caller();
