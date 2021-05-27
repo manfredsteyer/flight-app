@@ -1,7 +1,3 @@
 {
-    "flights": {
-        "title": "Flugsuche",
-        "found": "{{count}} Flüge gefunden",
-        "info": "Hallo Welt!"
-    }
+    "welcome": "Willkommen"
 }
