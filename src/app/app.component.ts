@@ -8,6 +8,7 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { authConfig } from './auth.config';
 
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
   showWaitInfo = false;
 
   constructor(
+    private translate: TranslateService,
     private oauthService: OAuthService,
     private router: Router) {
 

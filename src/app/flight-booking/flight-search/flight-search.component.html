@@ -2,6 +2,8 @@
 
 <h1>{{ 'flights.title' | translate}}</h1>
 
+<h2>{{ 'welcome' |translate }}</h2>
+
 <!-- Ergänzen Sie den form-Tag und weisen  -->
 <!-- Sie ihm eine Template-Variable zu: -->
 <form #f="ngForm" appRoundTrip>
@@ -65,7 +67,9 @@
         </button>
 
         <div>
-            {{ 'flights.found' | translate:{ count: flights.length } }}
+            <!-- {{ 'flights.found' | translate:{ count: flights.length } }} -->
+            {{ flights.length | i18nPlural: ('flights.found' | translate)}}
+        
         </div>
 
         <button *ngIf="flights.length > 0" class="btn btn-default" (click)="delay()">

@@ -1,0 +1,17 @@
+{
+    "flights": {
+        "title": "Flight Search",
+        "info": "Hello World!",
+        "booked": "You've booked a ticket for {{name}}",
+        "found": {
+            "=1": "One flight found",
+            "other": "# flights found"
+        },
+        "forward": {
+            "male": "Forward it to him",
+            "female": "Forward it to her",
+            "other": "Forward it to them"
+        }
+
+    }
+}

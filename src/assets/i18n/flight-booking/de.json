@@ -1,0 +1,16 @@
+{
+    "flights": {
+        "title": "Flugsuche",
+        "info": "Hallo Welt!",
+        "booked": "Sie haben ein Ticket für {{name}} gebucht",
+        "found": {
+            "1": "Ein Flug gefunden",
+            "other": "# Flüge gefunden"
+        },
+        "forward": {
+            "male": "Leiten Sie es ihm weiter",
+            "female": "Leiten Sie es ihr weiter",
+            "other": "Leiten Sie es ihm/ihr weiter"
+        }
+    }
+}

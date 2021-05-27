@@ -1,4 +1,7 @@
 <!-- src/app/flight-booking/passenger-search/passenger-search.component.html -->
 
 <h1>Passenger</h1>
-<p>Name: {{userName}}</p>
+<p>Name: {{userName || 'Not logged in'}}</p>
+
+<p>{{ 'flights.booked' | translate: { name: passenger.name } }}</p>
+<p>{{ passenger.gender | i18nSelect:('flights.forward' | translate) }} </p>
