@@ -25,12 +25,10 @@
         <note priority="1" from="meaning">Meaning</note>
       </trans-unit>
       <trans-unit id="flightSearch-flightsFound" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="     &lt;/button&gt;
 
-"/> flights found!</source>
-<target><x id="INTERPOLATION" equiv-text="     &lt;/button&gt;
+        <source>{VAR_PLURAL, plural, =1 {1 flight found} other {<x id="INTERPOLATION"/> flights found}}</source>
+        <source>{VAR_PLURAL, plural, =1 {1 Flug gefunden} other {<x id="INTERPOLATION"/> Flüge gefunden}}</source>
 
-  "/> Flüge gefunden!</target>
 
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/flight-booking/flight-search/flight-search.component.html</context>

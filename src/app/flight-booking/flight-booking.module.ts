@@ -40,9 +40,8 @@ export class FlightBookingModule {
 
   constructor() {
     loadTranslations({
-      'flightSearch-info': 'Liebesgrüße aus der main.ts!!',
-      'flightSearch-title': 'Flugsuche!!',
-      'flightSearch-flightsFound': '{$INTERPOLATION} wurden gefunden!'
+      'flightSearch-title': 'Flugsuche!!!!!',
+      'flightSearch-flightsFound': '{VAR_PLURAL, plural, =1 {1 Flug gefunden} other {{INTERPOLATION} Flüge gefunden!}}'
     });
   }
 }

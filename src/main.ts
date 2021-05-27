@@ -10,8 +10,6 @@ import { loadTranslations } from '@angular/localize';
 loadTranslations({
   'flightSearch-info': 'Liebesgrüße aus der main.ts!',
   // More key/value pairs in flight-booking.module.ts
-  // 'flightSearch-title': 'Flugsuche!!',
-  // 'flightSearch-flightsFound': '{$INTERPOLATION} wurden gefunden!'
 });
 
 if (environment.production) {
