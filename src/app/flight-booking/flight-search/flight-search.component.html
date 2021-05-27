@@ -1,6 +1,6 @@
 <!-- src/app/flight-search/flight-search.component.html -->
 
-<h1>Flight Search</h1>
+<h1>{{ 'flights.title' | translate}}</h1>
 
 <!-- Ergänzen Sie den form-Tag und weisen  -->
 <!-- Sie ihm eine Template-Variable zu: -->
@@ -63,6 +63,10 @@
         <button class="btn btn-default" (click)="search()" [disabled]="!f?.valid">
             Search
         </button>
+
+        <div>
+            {{ 'flights.found' | translate:{ count: flights.length } }}
+        </div>
 
         <button *ngIf="flights.length > 0" class="btn btn-default" (click)="delay()">
             Delay 1st Flight

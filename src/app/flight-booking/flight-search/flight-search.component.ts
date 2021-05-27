@@ -1,6 +1,7 @@
 // src/app/flight-search/flight-search.component.ts
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Flight } from '../flight';
 import { FlightService } from '../flight.service';
 
@@ -30,10 +31,14 @@ export class FlightSearchComponent implements OnInit {
   };
 
   constructor(
+    private translate: TranslateService,
     private flightService: FlightService) {
   }
 
   ngOnInit(): void {
+    this.translate.get('flights.info').subscribe(
+      info => console.debug('info', info)
+    );
   }
 
   search(): void {

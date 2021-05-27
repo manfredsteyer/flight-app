@@ -13,13 +13,14 @@ import { FlightEditComponent } from './flight-edit/flight-edit.component';
 // ReactiveFormsMoudle hinzufügen:
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlightBookingApiModule } from './flight-booking-api.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     FlightBookingApiModule,
     RouterModule.forChild(FLIGHT_BOOKING_ROUTES),
     FormsModule,
-
+    TranslateModule.forChild(),
     // Einfügen:
     ReactiveFormsModule,
     SharedModule
