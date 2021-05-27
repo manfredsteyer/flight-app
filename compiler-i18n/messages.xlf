@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="flightSearch-info" datatype="html">
+        <source>Hello World!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/flight-booking/flight-search/flight-search.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">description</note>
+        <note priority="1" from="meaning">meaning</note>
+      </trans-unit>
+      <trans-unit id="flightSearch-title" datatype="html">
+        <source>Flight Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/flight-booking/flight-search/flight-search.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Description</note>
+        <note priority="1" from="meaning">Meaning</note>
+      </trans-unit>
+      <trans-unit id="flightSearch-flightsFound" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="     &lt;/button&gt;
+
+"/> flights found!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/flight-booking/flight-search/flight-search.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

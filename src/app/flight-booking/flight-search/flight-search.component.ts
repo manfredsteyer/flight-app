@@ -15,6 +15,8 @@ export class FlightSearchComponent implements OnInit {
   from = 'Hamburg';
   to = 'Graz';
 
+  info =  $localize `:meaning|description@@flightSearch-info:Hello World!`;
+
   // Entfernen:
   // flights: Array<Flight> = [];
 
@@ -34,6 +36,7 @@ export class FlightSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.debug('info', this.info);
   }
 
   search(): void {
