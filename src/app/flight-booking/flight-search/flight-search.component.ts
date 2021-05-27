@@ -33,6 +33,7 @@ export class FlightSearchComponent implements OnInit {
 
   constructor(
     private flightService: FlightService) {
+
   }
 
   ngOnInit(): void {

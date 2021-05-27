@@ -13,6 +13,7 @@ import { FlightEditComponent } from './flight-edit/flight-edit.component';
 // ReactiveFormsMoudle hinzufügen:
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlightBookingApiModule } from './flight-booking-api.module';
+import { loadTranslations } from '@angular/localize';
 
 @NgModule({
   imports: [
@@ -35,4 +36,13 @@ import { FlightBookingApiModule } from './flight-booking-api.module';
     FlightSearchComponent
   ]
 })
-export class FlightBookingModule { }
+export class FlightBookingModule {
+
+  constructor() {
+    loadTranslations({
+      'flightSearch-info': 'Liebesgrüße aus der main.ts!!',
+      'flightSearch-title': 'Flugsuche!!',
+      'flightSearch-flightsFound': '{$INTERPOLATION} wurden gefunden!'
+    });
+  }
+}
