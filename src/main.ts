@@ -6,6 +6,11 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { loadTranslations } from '@angular/localize';
+import { registerLocaleData } from '@angular/common';
+
+import ES from '@angular/common/locales/es';
+
+registerLocaleData(ES);
 
 loadTranslations({
   'flightSearch-info': 'Liebesgrüße aus der main.ts!',

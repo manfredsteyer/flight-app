@@ -7,7 +7,7 @@
 
     <div class="card-body">
         <p>Flight-No.: #{{item?.id}}</p>
-        <p>Date: {{item?.date | date:'short'}}</p>
+        <p>Date: {{item?.date | date:'long':'':'es'}}</p>
         <p [ngStyle]="{ 'color': item?.delayed | statusColor }">Delayed: {{ item?.delayed }}</p>
         <p>
             <button class="btn btn-default" *ngIf="!selected" (click)="select()">Select</button>
