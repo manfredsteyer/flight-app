@@ -10,6 +10,11 @@ export class PassengerSearchComponent implements OnInit {
 
   userName = this.authService.userName;
 
+  passenger = {
+    name: 'Max',
+    gender: 'male'
+  };
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {

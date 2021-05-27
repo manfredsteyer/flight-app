@@ -9,7 +9,10 @@ import { loadTranslations } from '@angular/localize';
 
 loadTranslations({
   'flightSearch-info': 'Liebesgrüße aus der main.ts!',
-  // More key/value pairs in flight-booking.module.ts
+  'passenger-bookedTicket': 'Sie haben ein Ticket für {$INTERPOLATION} gebucht!',
+  // eslint-disable-next-line max-len
+  'passenger-forward': '{VAR_SELECT, select, male {Leiten Sie es ihm weiter} female {Leiten Sie es Ihr weiter} other {Leiten Sie es ihm/ ihr weiter}}.'
+
 });
 
 if (environment.production) {

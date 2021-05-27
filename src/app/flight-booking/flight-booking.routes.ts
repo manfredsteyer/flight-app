@@ -26,7 +26,7 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
             {
                 path: 'passenger-search',
                 component: PassengerSearchComponent,
-                canActivate: [AuthGuard]
+                //canActivate: [AuthGuard]
             },
             {
                 path: 'flight-edit/:id',
