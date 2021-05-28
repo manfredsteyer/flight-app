@@ -1,3 +1,5 @@
+// src/app/flight-booking/passenger-search/passenger-search.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 
