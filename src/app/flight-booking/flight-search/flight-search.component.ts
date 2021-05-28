@@ -15,7 +15,7 @@ export class FlightSearchComponent implements OnInit {
   from = 'Hamburg';
   to = 'Graz';
 
-  info =  $localize `:meaning|description@@flightSearch-info:Hello World!`;
+  info = $localize `:meaning|description@@flightSearch-info:Hello World!`;
 
   // Entfernen:
   // flights: Array<Flight> = [];
