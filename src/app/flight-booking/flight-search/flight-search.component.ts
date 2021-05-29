@@ -1,7 +1,9 @@
 // src/app/flight-search/flight-search.component.ts
 
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Flight } from '../flight';
 import { FlightService } from '../flight.service';
 
@@ -11,7 +13,9 @@ import { FlightService } from '../flight.service';
   styleUrls: ['./flight-search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FlightSearchComponent implements OnInit {
+export class FlightSearchComponent implements OnInit, OnDestroy {
+
+  closeSubject = new Subject<void>();
 
   from = 'Hamburg';
   to = 'Graz';
@@ -35,9 +39,23 @@ export class FlightSearchComponent implements OnInit {
     private flightService: FlightService) {
   }
 
+  ngOnDestroy(): void {
+    this.closeSubject.next();
+  }
+
   ngOnInit(): void {
-    this.translate.get('flights.info').subscribe(
+    this.translate.get('flights.info').pipe(
+      takeUntil(this.closeSubject)
+    )
+    .subscribe(
       info => console.debug('info', info)
+    );
+
+    this.translate.get('flights.found', { count: 0 }).pipe(
+      takeUntil(this.closeSubject)
+    )
+    .subscribe(
+      found => console.debug('found', found)
     );
   }
 
