@@ -39,6 +39,7 @@ export const PARENT_TRANSLATE_SERVICE = new InjectionToken<TranslateService>('PA
       },
       defaultLanguage: 'en',
       isolate: true,
+      // extend: true
     }),
     // Einfügen:
     ReactiveFormsModule,
