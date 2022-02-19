@@ -23,7 +23,7 @@ export class FlightSearchComponent implements OnInit {
   // flights: Array<Flight> = [];
 
   // Hinzufügen:
-  flights$ = this.store.select(selectFlightsWithParams, [5]);
+  flights$ = this.store.select(selectFlightsWithParams([5]));
 
   selectedFlight: Flight | null = null;
   delayFilter = false;

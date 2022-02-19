@@ -30,8 +30,11 @@ export const selectFlights = createSelector(
   (flights, hide) => flights.filter(f => !hide.includes(f.id))
 );
 
-export const selectFlightsWithParams = createSelector<FlightBookingAppState, number[], Flight[], number[], Flight[]>(
-  (appState) => appState[flightBookingFeatureKey].flights,
-  (appState) => appState[flightBookingFeatureKey].hide,
-  (flights, hide, props) => flights.filter(f => !hide.includes(f.id) && !props.includes(f.id))
-);
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+export function selectFlightsWithParams(exclude: number[]) {
+  return createSelector(
+    (appState: FlightBookingAppState) => appState[flightBookingFeatureKey].flights,
+    (appState: FlightBookingAppState) => appState[flightBookingFeatureKey].hide,
+    (flights, hide) => flights.filter(f => !hide.includes(f.id) && !exclude.includes(f.id))
+  );
+}
